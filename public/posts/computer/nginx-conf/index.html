@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Nginx安全配置 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/computer/nginx-conf/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="Nginx安全配置">
+  <meta property="og:description" content="root@datacon-winterc:~/quickstart# cat /etc/nginx/nginx.conf | grep access_log access_log /var/log/nginx/access.log; #nginx访问日志文件 grep wp-admin /var/log/nginx/access.log | cat -n #查看日志中含wp-admin(wordpress后台)的内容 1 162.158.182.84 - - [05/Feb/2026:00:05:25 &#43;0800] &#34;GET /wordpress/wp-admin/setup-config.php HTTP/1.1&#34; 404 134 &#34;-&#34; &#34;https://alexsun.one/wordpress/wp-admin/setup-config.php&#34; ...... 73 172.71.184.188 - - [05/Feb/2026:10:49:11 &#43;0800] &#34;GET /wp-admin/setup-config.php HTTP/1.1&#34; 444 0 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36&#34; 我的站点上并没有安装WordPress，以上73条访问日志来自于恶意扫描1">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-05T10:47:08+08:00">
+    <meta property="article:modified_time" content="2026-02-05T10:47:08+08:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Nginx">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nginx安全配置">
+  <meta name="twitter:description" content="root@datacon-winterc:~/quickstart# cat /etc/nginx/nginx.conf | grep access_log access_log /var/log/nginx/access.log; #nginx访问日志文件 grep wp-admin /var/log/nginx/access.log | cat -n #查看日志中含wp-admin(wordpress后台)的内容 1 162.158.182.84 - - [05/Feb/2026:00:05:25 &#43;0800] &#34;GET /wordpress/wp-admin/setup-config.php HTTP/1.1&#34; 404 134 &#34;-&#34; &#34;https://alexsun.one/wordpress/wp-admin/setup-config.php&#34; ...... 73 172.71.184.188 - - [05/Feb/2026:10:49:11 &#43;0800] &#34;GET /wp-admin/setup-config.php HTTP/1.1&#34; 444 0 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36&#34; 我的站点上并没有安装WordPress，以上73条访问日志来自于恶意扫描1">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/computer/nginx-conf/" /><link rel="next" href="http://localhost:1313/posts/computer/http-response-status-code/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Nginx安全配置",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/computer\/nginx-conf\/"
+        },"genre": "posts","keywords": "Linux, nginx","wordcount":  197 ,
+        "url": "http:\/\/localhost:1313\/posts\/computer\/nginx-conf\/","datePublished": "2026-02-05T10:47:08+08:00","dateModified": "2026-02-05T10:47:08+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Nginx安全配置</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"><i class="far fa-folder" aria-hidden="true"></i>网站建设</a>&nbsp;<a href="/categories/%E7%BD%91%E7%BB%9C/"><i class="far fa-folder" aria-hidden="true"></i>网络</a>&nbsp;<a href="/categories/linux%E5%91%BD%E4%BB%A4/"><i class="far fa-folder" aria-hidden="true"></i>Linux命令</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-05">2026-02-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;197 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@datacon-winterc:~/quickstart# cat /etc/nginx/nginx.conf <span class="p">|</span> grep access_log
+</span></span><span class="line"><span class="cl">access_log /var/log/nginx/access.log<span class="p">;</span> <span class="c1">#nginx访问日志文件</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">grep wp-admin /var/log/nginx/access.log <span class="p">|</span> cat -n
+</span></span><span class="line"><span class="cl"><span class="c1">#查看日志中含wp-admin(wordpress后台)的内容</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>1  162.158.182.84 - - [05/Feb/2026:00:05:25 +0800] &#34;GET /wordpress/wp-admin/setup-config.php HTTP/1.1&#34; 404 134 &#34;-&#34; &#34;https://alexsun.one/wordpress/wp-admin/setup-config.php&#34;
+......
+73  172.71.184.188 - - [05/Feb/2026:10:49:11 +0800] &#34;GET /wp-admin/setup-config.php HTTP/1.1&#34; 444 0 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36&#34;</code></pre></div>
+<p>我的站点上并没有安装WordPress，以上73条访问日志来自于<em><strong>恶意扫描</strong></em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computer/nginx-conf/69840e9e9cc7c.png"
+        data-srcset="/posts/computer/nginx-conf/69840e9e9cc7c.png, /posts/computer/nginx-conf/69840e9e9cc7c.png 1.5x, /posts/computer/nginx-conf/69840e9e9cc7c.png 2x"
+        data-sizes="auto"
+        alt="/posts/computer/nginx-conf/69840e9e9cc7c.png"
+        title="IP信息" width="1560" height="1596" /></p>
+<p>用nginx的location可以配置路由，实现对恶意扫描的处理：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>location [modifier] [URI] {
+
+}</code></pre></div>
+<blockquote>
+<p>下面下面是 Nginx 中 <strong>location</strong> 指令最常用的几种匹配方式（modifier）的语法总结，以表格形式呈现，便于对照和记忆。</p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>优先级</th>
+          <th>Modifier（修饰符）</th>
+          <th>匹配类型</th>
+          <th>大小写敏感</th>
+          <th>说明</th>
+          <th>示例</th>
+          <th>典型使用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>=</td>
+          <td>精确匹配</td>
+          <td>是</td>
+          <td>必须完全相等（包括结尾斜杠），一旦命中立即停止搜索其他 location</td>
+          <td><code>location = /</code> <!-- raw HTML omitted --><code>location = /index.html</code></td>
+          <td>favicon.ico、首页、特定静态文件</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>^~</td>
+          <td>前缀匹配（优先）</td>
+          <td>是</td>
+          <td>前缀匹配，命中后<strong>不再检查正则</strong> location（最长前缀优先）</td>
+          <td><code>location ^~ /wp-</code> <!-- raw HTML omitted --><code>location ^~ /images/</code></td>
+          <td>屏蔽扫描路径、静态资源目录</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>~</td>
+          <td>正则匹配</td>
+          <td>是（区分）</td>
+          <td>正则表达式匹配，区分大小写，按配置文件出现顺序逐个尝试</td>
+          <td><code>location ~ \.php$</code> <!-- raw HTML omitted --><code>location ~ ^/admin</code></td>
+          <td>处理 .php 文件、特定路径规则</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>~*</td>
+          <td>正则匹配（忽略大小写）</td>
+          <td>否</td>
+          <td>正则表达式匹配，不区分大小写，按配置文件出现顺序逐个尝试</td>
+          <td>`location ~* .(jpg</td>
+          <td>png</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>（无修饰符）</td>
+          <td>前缀匹配（普通）</td>
+          <td>是</td>
+          <td>普通前缀匹配，匹配最长前缀后继续尝试正则（除非被 ^~ 阻止）</td>
+          <td><code>location /</code> <!-- raw HTML omitted --><code>location /blog/</code></td>
+          <td>默认根路径、子目录兜底</td>
+      </tr>
+      <tr>
+          <td>特殊</td>
+          <td>@name</td>
+          <td>命名 location</td>
+          <td>—</td>
+          <td>内部跳转使用，不能直接被外部请求命中</td>
+          <td><code>location @fallback { ... }</code></td>
+          <td>error_page 跳转、try_files 内部重定向</td>
+      </tr>
+  </tbody>
+</table>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code># 屏蔽常见的 WordPress 扫描路径（可放在 server {} 内或 include 到所有 server）
+location ~* ^/(wp-admin|wp-login\.php|wp-config\.php|xmlrpc\.php|readme\.html|license\.txt|wp-signup\.php|setup-config\.php) {
+    # return HTTP_RESPONSE_CODE
+    # 或者用 return 403; 但 444 更省资源
+    return 444;
+}</code></pre></div>
+<p>关于HTTP状态码，详见<a href="https://www.alexsun.one/posts/http_response_status_code/" target="_blank" rel="noopener noreffer ">HTTP_RESPONSE_STATUS_CODE</a></p>
+<p>更加简单粗暴的解决方案：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>location ~ (php|aspx|git|python) {
+   	return 444;
+}</code></pre></div>
+<p>如果访问这些路径，服务器断开连接，则配置成功</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@datacon-winterc:~/quickstart# curl -i https://www.alexsun.one/index.php
+</span></span><span class="line"><span class="cl">curl: <span class="o">(</span>52<span class="o">)</span> Empty reply from server</span></span></code></pre></div></div>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><em>自动化扫描行为（reconnaissance scanning）</em>，不是针对你个人的攻击，而是几乎所有<em>暴露在公网</em>的服务器都会遇到的“噪音”。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-02-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-title="Nginx安全配置" data-hashtags="Linux,nginx"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-title="Nginx安全配置"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-hashtag="Linux"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-title="Nginx安全配置"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-title="Nginx安全配置"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-title="Nginx安全配置"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/computer/nginx-conf/" data-title="Nginx安全配置" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcomputer%2fnginx-conf%2f&amp;text=Nginx%e5%ae%89%e5%85%a8%e9%85%8d%e7%bd%ae" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/nginx/">Nginx</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/computer/http-response-status-code/" class="next" rel="next" title="HTTP状态码">HTTP状态码<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

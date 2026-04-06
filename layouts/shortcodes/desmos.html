@@ -1,0 +1,11 @@
+{{ $id := .Get "id" | default (printf "calc-%d" now.UnixNano) }}
+<div class="desmos-container" 
+     id="desmos-{{ $id }}" 
+     data-desmos-id="{{ $id }}"
+     data-funcs="{{ .Get "funcs" | safeJS }}"
+     data-xmin="{{ .Get "xmin" | default -10 }}"
+     data-xmax="{{ .Get "xmax" | default 10 }}"
+     data-ymin="{{ .Get "ymin" | default -10 }}"
+     data-ymax="{{ .Get "ymax" | default 10 }}"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>

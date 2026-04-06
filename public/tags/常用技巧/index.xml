@@ -1,0 +1,48 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>常用技巧 - Tag - My New Hugo Site</title>
+        <link>http://localhost:1313/tags/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+        <description>常用技巧 - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 05 Mar 2026 20:54:13 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/" rel="self" type="application/rss+xml" /><item>
+    <title>自然对数的估值方法</title>
+    <link>http://localhost:1313/posts/math/lnx-approximation/</link>
+    <pubDate>Thu, 05 Mar 2026 20:54:13 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/lnx-approximation/</guid>
+    <description><![CDATA[<h1 id="泰勒展开">泰勒展开</h1>
+<p>( \ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots + (-1)^{n-1} \frac{x^n}{n} + o(x^n) )
+需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.</p>
+<p>具体内容,可以见<a href="https://www.sunisalex.org/posts/math/taylor-expansion/" target="_blank" rel="noopener noreffer ">浅谈泰勒展开与高考数学</a>.</p>
+<h1 id="帕德逼近">帕德逼近(※)</h1>
+<p>以下是<a href="https://zh.wikipedia.org/zh-sg/%E5%B8%95%E5%BE%B7%E8%BF%91%E4%BC%BC" target="_blank" rel="noopener noreffer ">维基百科</a>给出的简介,这里不加赘述.
+</p>
+<p>总之,一般在<strong>主对角线</strong>[n,n]上(或附近)的<strong>帕德逼近</strong>比较精确.
+[1, 1] 阶:$$\ln(1+x) \approx \frac{x + \frac{1}{2}x^2}{1 + x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x+2}$$(注：$\frac{2x}{x+2}$ 实际上是 $\ln(\frac{1+y}{1-y})$ 的变形，在 $x$ 较小时非常准)</p>
+<p>[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x+1)}{3(x+1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2+4x+1}$$</p>
+<p>
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487657458" 
+     data-desmos-id="calc-1775514536487657458"
+     data-funcs="y=\ln(1&#43;x)|y=\frac{2x}{x&#43;2}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487701208" 
+     data-desmos-id="calc-1775514536487701208"
+     data-funcs="y=\ln(x)|y=\frac{3(x^{2}-1)}{x^{2}&#43;4x&#43;1}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>]]></description>
+</item>
+</channel>
+</rss>

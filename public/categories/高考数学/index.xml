@@ -1,0 +1,138 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>高考数学 - Category - My New Hugo Site</title>
+        <link>http://localhost:1313/categories/%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6/</link>
+        <description>高考数学 - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 03 Apr 2026 20:48:40 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+    <title>变态难の对数Pade逼近</title>
+    <link>http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/</link>
+    <pubDate>Fri, 03 Apr 2026 20:48:40 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/</guid>
+    <description><![CDATA[本文围绕对数函数 $\ln x$ 与 $\ln(1+x)$ 的 <strong>Padé 逼近与不等式放缩</strong> 展开，系统总结了一类高考常见的估值与比较技巧。]]></description>
+</item>
+<item>
+    <title>26年3月27日课堂复盘</title>
+    <link>http://localhost:1313/posts/math/2026-3-27-lwy-review/</link>
+    <pubDate>Fri, 27 Mar 2026 22:17:31 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/2026-3-27-lwy-review/</guid>
+    <description><![CDATA[<h1 id="两个重要数列">两个重要数列</h1>
+<p>$n\in N^*$,有以下两个数列:</p>
+<ul>
+<li>$a_n=(1+\frac{1}{n})^n$</li>
+<li>$b_n=(1+\frac{1}{n})^{n+1}$</li>
+</ul>
+<p>我们有以下两个结论:</p>
+<ol>
+<li>$a_n\lt e\lt b_n$</li>
+<li>${a_n}$为<strong>递增</strong>数列,${b_n}$为<strong>递减</strong>数列</li>
+<li>${a_n},{b_n}$<strong>收敛</strong>,$\lim_{n \to \infty} a_n=\lim_{n \to \infty} b_n=e$</li>
+</ol>
+<p>我们可以观看<strong>优美的desmos图像</strong>感受性质.
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536417985792" 
+     data-desmos-id="calc-1775514536417985792"
+     data-funcs="a_{n}=\left(1&#43;\frac{1}{n}\right)^{n}\left\{n\ge1\right\}|b_{n}=\left(1&#43;\frac{1}{n}\right)^{n&#43;1}\left\{n\ge1\right\}|y=e\left\{n\ge1\right\}"
+     data-xmin="0"
+     data-xmax="10"
+     data-ymin="0"
+     data-ymax="4"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>
+<p>下面进行证明:</p>
+<p>先证(1),其等价于:</p>
+<p>$$
+\begin{gather}
+n\ln (1+\frac{1}{n})\lt 1 \lt (n+1)\ln (1+\frac{1}{n})\
+\frac{1}{n+1}\lt\ln (1+\frac{1}{n})\lt \frac{1}{n} \
+这其实就是对数不等式链的核心:\
+x^2-x\ge xlnx\\ge x-1\ge lnx\ge 1-\cfrac{1}{x}\\ge \cfrac{lnx}{x}(x=0,x\gt 0)
+\end{gather}
+$$</p>
+<p>对于(2),其证明有两大类流派:</p>
+<h2 id="构造函数导就完了">构造函数(<del>导就完了</del>)</h2>
+<p>取对数可以化简复杂指数,所以:</p>
+<p>${a_n}$为<strong>递增</strong>数列,等价于:</p>
+<p>$$
+\begin{gather}
+n\ln (1+\frac{1}{n})\lt (n+1)\ln (1+\frac{1}{n+1})\
+\frac{\ln (1+\frac{1}{n})}{\frac{1}{n}}\lt \frac{\ln (1+\frac{1}{n+1})}{\frac{1}{n+1}}\
+[一解]\
+构造函数:f(x)=\frac{\ln(x+1)}{x}(0\lt x\le 1)\
+f&rsquo;(x)=\frac{\frac{x}{x+1}-ln(x+1)}{x^2}\
+注意到:\ln (x+1)\gt \frac{x}{x+1}(x\gt 0),有:\
+f&rsquo;(x)\lt 0,f(x)单调递减,又:\
+\frac{1}{n}\gt \frac{1}{n+1}\
+证明完毕.\
+[另解]\
+构造函数g(x)=x[\ln(x+1)-\ln x](x\ge 1)\
+g&rsquo;(x)=\ln \frac{x+1}{x}+\frac{x}{x+1}-1\\gt 1-\frac{x}{x+1}+\frac{x}{x+1}-1=0\
+于是g(x)单调递增,Q.E.D.
+\end{gather}
+$$</p>]]></description>
+</item>
+<item>
+    <title>自然对数的估值方法</title>
+    <link>http://localhost:1313/posts/math/lnx-approximation/</link>
+    <pubDate>Thu, 05 Mar 2026 20:54:13 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/lnx-approximation/</guid>
+    <description><![CDATA[<h1 id="泰勒展开">泰勒展开</h1>
+<p>( \ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots + (-1)^{n-1} \frac{x^n}{n} + o(x^n) )
+需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.</p>
+<p>具体内容,可以见<a href="https://www.sunisalex.org/posts/math/taylor-expansion/" target="_blank" rel="noopener noreffer ">浅谈泰勒展开与高考数学</a>.</p>
+<h1 id="帕德逼近">帕德逼近(※)</h1>
+<p>以下是<a href="https://zh.wikipedia.org/zh-sg/%E5%B8%95%E5%BE%B7%E8%BF%91%E4%BC%BC" target="_blank" rel="noopener noreffer ">维基百科</a>给出的简介,这里不加赘述.
+</p>
+<p>总之,一般在<strong>主对角线</strong>[n,n]上(或附近)的<strong>帕德逼近</strong>比较精确.
+[1, 1] 阶:$$\ln(1+x) \approx \frac{x + \frac{1}{2}x^2}{1 + x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x+2}$$(注：$\frac{2x}{x+2}$ 实际上是 $\ln(\frac{1+y}{1-y})$ 的变形，在 $x$ 较小时非常准)</p>
+<p>[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x+1)}{3(x+1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2+4x+1}$$</p>
+<p>
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487657458" 
+     data-desmos-id="calc-1775514536487657458"
+     data-funcs="y=\ln(1&#43;x)|y=\frac{2x}{x&#43;2}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487701208" 
+     data-desmos-id="calc-1775514536487701208"
+     data-funcs="y=\ln(x)|y=\frac{3(x^{2}-1)}{x^{2}&#43;4x&#43;1}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>]]></description>
+</item>
+<item>
+    <title>浅谈泰勒展开与高考数学</title>
+    <link>http://localhost:1313/posts/math/taylor-expansion/</link>
+    <pubDate>Mon, 23 Feb 2026 17:10:57 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/taylor-expansion/</guid>
+    <description><![CDATA[<h1 id="泰勒公式">泰勒公式</h1>
+<h2 id="高数知识">高数知识</h2>
+<p>泰勒 (Taylor) 公式的主要作用是用多项式逼近函数和近似计算，对应的分别是带有皮亚诺余项的泰勒公式和带有拉格朗日余项的泰勒公式。</p>
+<h3 id="1-带有皮亚诺余项的泰勒公式">1. 带有皮亚诺余项的泰勒公式</h3>
+<p>若函数 ( f(x) ) 在点 ( x_0 ) 处存在直至 ( n ) 阶导数，则有
+$$f(x) = f(x_0) + f&rsquo;(x_0)(x - x_0) + \frac{f&rsquo;&rsquo;(x_0)}{2!}(x - x_0)^2 + \cdots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + o((x - x_0)^n).$$</p>
+<p>用得较多的是泰勒公式在 ( x_0 = 0 ) 时的特殊形式：
+$$f(x) = f(0) + f&rsquo;(0)x + \frac{f&rsquo;&rsquo;(0)}{2!}x^2 + \cdots + \frac{f^{(n)}(0)}{n!}x^n + o(x^n).$$</p>
+<p>它也称为 (带有皮亚诺余项的) 麦克劳林 (Maclaurin) 公式。</p>
+<h3 id="2-带有拉格朗日余项的泰勒公式">2. 带有拉格朗日余项的泰勒公式</h3>
+<p>若函数 ( f(x) ) 在 ([a, b]) 上存在直至 ( n ) 阶的连续导函数，在 ((a, b)) 内存在 ( n+1 ) 阶导函数，则对任意给定的 ( x, x_0 \in [a, b] )，至少存在一点 (\xi \in (a, b))，使得
+$$f(x) = f(x_0) + f&rsquo;(x_0)(x - x_0) + \frac{f&rsquo;&rsquo;(x_0)}{2!}(x - x_0)^2 + \cdots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - x_0)^{n+1}.$$</p>]]></description>
+</item>
+</channel>
+</rss>

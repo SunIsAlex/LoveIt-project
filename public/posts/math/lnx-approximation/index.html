@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>自然对数的估值方法 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/math/lnx-approximation/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="自然对数的估值方法">
+  <meta property="og:description" content="泰勒展开 ( \ln (1&#43;x) = x - \frac{x^2}{2} &#43; \frac{x^3}{3} - \cdots &#43; (-1)^{n-1} \frac{x^n}{n} &#43; o(x^n) ) 需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.
+具体内容,可以见浅谈泰勒展开与高考数学.
+帕德逼近(※) 以下是维基百科给出的简介,这里不加赘述. 总之,一般在主对角线[n,n]上(或附近)的帕德逼近比较精确. [1, 1] 阶:$$\ln(1&#43;x) \approx \frac{x &#43; \frac{1}{2}x^2}{1 &#43; x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x&#43;2}$$(注：$\frac{2x}{x&#43;2}$ 实际上是 $\ln(\frac{1&#43;y}{1-y})$ 的变形，在 $x$ 较小时非常准)
+[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x&#43;1)}{3(x&#43;1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2&#43;4x&#43;1}$$">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-05T20:54:13+08:00">
+    <meta property="article:modified_time" content="2026-03-05T20:54:13+08:00">
+    <meta property="article:tag" content="数学">
+    <meta property="article:tag" content="常用技巧">
+    <meta property="article:tag" content="导数">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="自然对数的估值方法">
+  <meta name="twitter:description" content="泰勒展开 ( \ln (1&#43;x) = x - \frac{x^2}{2} &#43; \frac{x^3}{3} - \cdots &#43; (-1)^{n-1} \frac{x^n}{n} &#43; o(x^n) ) 需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.
+具体内容,可以见浅谈泰勒展开与高考数学.
+帕德逼近(※) 以下是维基百科给出的简介,这里不加赘述. 总之,一般在主对角线[n,n]上(或附近)的帕德逼近比较精确. [1, 1] 阶:$$\ln(1&#43;x) \approx \frac{x &#43; \frac{1}{2}x^2}{1 &#43; x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x&#43;2}$$(注：$\frac{2x}{x&#43;2}$ 实际上是 $\ln(\frac{1&#43;y}{1-y})$ 的变形，在 $x$ 较小时非常准)
+[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x&#43;1)}{3(x&#43;1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2&#43;4x&#43;1}$$">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/math/lnx-approximation/" /><link rel="prev" href="http://localhost:1313/posts/math/taylor-expansion/" /><link rel="next" href="http://localhost:1313/posts/math/constrained-extremum-problem001/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "自然对数的估值方法",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/math\/lnx-approximation\/"
+        },"genre": "posts","keywords": "数学, 常用技巧, 导数","wordcount":  278 ,
+        "url": "http:\/\/localhost:1313\/posts\/math\/lnx-approximation\/","datePublished": "2026-03-05T20:54:13+08:00","dateModified": "2026-03-05T20:54:13+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">自然对数的估值方法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6/"><i class="far fa-folder" aria-hidden="true"></i>高考数学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-05">2026-03-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;278 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-10-自然对数-ln-x-估值与推导表">1-10 自然对数 (ln x) 估值与推导表</a></li>
+        <li><a href="#高频衍生常数-高考导数题常客">高频衍生常数 (高考导数题常客)</a></li>
+        <li><a href="#实用推导公式-考场快速计算">实用推导公式 (考场快速计算)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="泰勒展开">泰勒展开</h1>
+<p>( \ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots + (-1)^{n-1} \frac{x^n}{n} + o(x^n) )
+需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.</p>
+<p>具体内容,可以见<a href="https://www.sunisalex.org/posts/math/taylor-expansion/" target="_blank" rel="noopener noreffer ">浅谈泰勒展开与高考数学</a>.</p>
+<h1 id="帕德逼近">帕德逼近(※)</h1>
+<p>以下是<a href="https://zh.wikipedia.org/zh-sg/%E5%B8%95%E5%BE%B7%E8%BF%91%E4%BC%BC" target="_blank" rel="noopener noreffer ">维基百科</a>给出的简介,这里不加赘述.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/lnx-approximation/AgACAgEAAyEGAATlvtEQAAMeaal9j4ifvzXpCZbNC-5wPK-cSREAAukLaxuKrkhFJmRRegg0MOEBAAMCAAN3AAM6BA.png"
+        data-srcset="/posts/math/lnx-approximation/AgACAgEAAyEGAATlvtEQAAMeaal9j4ifvzXpCZbNC-5wPK-cSREAAukLaxuKrkhFJmRRegg0MOEBAAMCAAN3AAM6BA.png, /posts/math/lnx-approximation/AgACAgEAAyEGAATlvtEQAAMeaal9j4ifvzXpCZbNC-5wPK-cSREAAukLaxuKrkhFJmRRegg0MOEBAAMCAAN3AAM6BA.png 1.5x, /posts/math/lnx-approximation/AgACAgEAAyEGAATlvtEQAAMeaal9j4ifvzXpCZbNC-5wPK-cSREAAukLaxuKrkhFJmRRegg0MOEBAAMCAAN3AAM6BA.png 2x"
+        data-sizes="auto"
+        alt="/posts/math/lnx-approximation/AgACAgEAAyEGAATlvtEQAAMeaal9j4ifvzXpCZbNC-5wPK-cSREAAukLaxuKrkhFJmRRegg0MOEBAAMCAAN3AAM6BA.png"
+        title="图片" width="1422" height="1168" /></p>
+<p>总之,一般在<strong>主对角线</strong>[n,n]上(或附近)的<strong>帕德逼近</strong>比较精确.
+[1, 1] 阶:$$\ln(1+x) \approx \frac{x + \frac{1}{2}x^2}{1 + x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x+2}$$(注：$\frac{2x}{x+2}$ 实际上是 $\ln(\frac{1+y}{1-y})$ 的变形，在 $x$ 较小时非常准)</p>
+<p>[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x+1)}{3(x+1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2+4x+1}$$</p>
+<p>
+<div class="desmos-container" 
+     id="desmos-calc-1775514536437096469" 
+     data-desmos-id="calc-1775514536437096469"
+     data-funcs="y=\ln(1&#43;x)|y=\frac{2x}{x&#43;2}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536437158448" 
+     data-desmos-id="calc-1775514536437158448"
+     data-funcs="y=\ln(x)|y=\frac{3(x^{2}-1)}{x^{2}&#43;4x&#43;1}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>
+<p>由图可知,$ln(x)$的[3,2]阶帕德逼近精度极高,几乎与原函数重合了.
+$g(x)=\frac{3(x^{2}-1)}{x^{2}+4x+1}$</p>
+<table>
+  <thead>
+      <tr>
+          <th>x</th>
+          <th>$g(x)$</th>
+          <th>$ln(x)$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>$\approx 0.692307692308$</td>
+          <td>$\approx 0.69314718056$</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>$\approx 1.09090909091$</td>
+          <td>$\approx 1.09861228867$</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="特殊值表">特殊值表</h1>
+<h3 id="1-10-自然对数-ln-x-估值与推导表">1-10 自然对数 (ln x) 估值与推导表</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">x</th>
+          <th style="text-align: left">ln x 近似值</th>
+          <th style="text-align: left">推导过程 / 记忆点</th>
+          <th style="text-align: left">备注</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>1</strong></td>
+          <td style="text-align: left"><strong>0.000</strong></td>
+          <td style="text-align: left">ln 1 = 0</td>
+          <td style="text-align: left">基础定义</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>2</strong></td>
+          <td style="text-align: left"><strong>0.693</strong></td>
+          <td style="text-align: left"><strong>核心常数</strong> (约 0.7)</td>
+          <td style="text-align: left">必须熟记</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>3</strong></td>
+          <td style="text-align: left"><strong>1.099</strong></td>
+          <td style="text-align: left"><strong>核心常数</strong> (约 1.1)</td>
+          <td style="text-align: left">必须熟记</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4</strong></td>
+          <td style="text-align: left"><strong>1.386</strong></td>
+          <td style="text-align: left">ln(2²) = 2 × ln 2 ≈ 2 × 0.693</td>
+          <td style="text-align: left">2倍关系</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>5</strong></td>
+          <td style="text-align: left"><strong>1.609</strong></td>
+          <td style="text-align: left">ln(10/2) = ln 10 - ln 2 ≈ 2.303 - 0.693</td>
+          <td style="text-align: left">补数关系</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>6</strong></td>
+          <td style="text-align: left"><strong>1.792</strong></td>
+          <td style="text-align: left">ln(2×3) = ln 2 + ln 3 ≈ 0.693 + 1.099</td>
+          <td style="text-align: left">积的关系</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>7</strong></td>
+          <td style="text-align: left"><strong>1.946</strong></td>
+          <td style="text-align: left">约 1.95 (记忆：比 2 略小一点)</td>
+          <td style="text-align: left">质数需单记</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>8</strong></td>
+          <td style="text-align: left"><strong>2.079</strong></td>
+          <td style="text-align: left">ln(2³) = 3 × ln 2 ≈ 3 × 0.693</td>
+          <td style="text-align: left">3倍关系</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>9</strong></td>
+          <td style="text-align: left"><strong>2.197</strong></td>
+          <td style="text-align: left">ln(3²) = 2 × ln 3 ≈ 2 × 1.099</td>
+          <td style="text-align: left">2倍关系</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>10</strong></td>
+          <td style="text-align: left"><strong>2.303</strong></td>
+          <td style="text-align: left"><strong>核心常数</strong> (换底公式常用)</td>
+          <td style="text-align: left">必须熟记</td>
+      </tr>
+  </tbody>
+</table>
+<p>重点记住<strong>质数项</strong></p>
+<hr>
+<h3 id="高频衍生常数-高考导数题常客">高频衍生常数 (高考导数题常客)</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">常数项</th>
+          <th style="text-align: left">近似值</th>
+          <th style="text-align: left">对应关系</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>e</strong></td>
+          <td style="text-align: left">2.718</td>
+          <td style="text-align: left">ln e = 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>1/e</strong></td>
+          <td style="text-align: left">0.368</td>
+          <td style="text-align: left">ln(1/e) = -1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>√e</strong></td>
+          <td style="text-align: left">1.649</td>
+          <td style="text-align: left">ln(√e) = 0.5 (与 ln 5 极近)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>e²</strong></td>
+          <td style="text-align: left">7.389</td>
+          <td style="text-align: left">ln(e²) = 2</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="实用推导公式-考场快速计算">实用推导公式 (考场快速计算)</h3>
+<ol>
+<li><strong>积/商性质：</strong> - $ln(ab) = ln a + ln b$
+<ul>
+<li>$ln(a/b) = ln a - ln b$</li>
+</ul>
+</li>
+<li><strong>线性近似 (微分修正)：</strong>
+<ul>
+<li>
+<p>当 Δx 较小时：$ln(x + Δx) ≈ ln x + (Δx / x)$</p>
+</li>
+<li>
+<p><em>例子：估算 $ln 2.1$</em></p>
+<p>$ln 2.1 ≈ ln 2 + 0.1/2 = 0.693 + 0.05 = 0.743$ (真值 0.7419)</p>
+</li>
+</ul>
+</li>
+<li><strong>换底转换：</strong>
+<ul>
+<li>$lg x ≈ 0.4343 · ln x$</li>
+<li>$ln x ≈ 2.3026 · lg x$</li>
+</ul>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-03-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-title="自然对数的估值方法" data-hashtags="数学,常用技巧,导数"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-title="自然对数的估值方法"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-hashtag="数学"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-title="自然对数的估值方法"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-title="自然对数的估值方法"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-title="自然对数的估值方法"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/math/lnx-approximation/" data-title="自然对数的估值方法" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fmath%2flnx-approximation%2f&amp;text=%e8%87%aa%e7%84%b6%e5%af%b9%e6%95%b0%e7%9a%84%e4%bc%b0%e5%80%bc%e6%96%b9%e6%b3%95" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>,&nbsp;<a href="/tags/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">常用技巧</a>,&nbsp;<a href="/tags/%E5%AF%BC%E6%95%B0/">导数</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/math/taylor-expansion/" class="prev" rel="prev" title="浅谈泰勒展开与高考数学"><i class="fas fa-angle-left" aria-hidden="true"></i>浅谈泰勒展开与高考数学</a>
+            <a href="/posts/math/constrained-extremum-problem001/" class="next" rel="next" title="约束条件最值一百题001">约束条件最值一百题001<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

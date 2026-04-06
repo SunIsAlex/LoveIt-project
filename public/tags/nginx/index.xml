@@ -1,0 +1,107 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Nginx - Tag - My New Hugo Site</title>
+        <link>http://localhost:1313/tags/nginx/</link>
+        <description>Nginx - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 05 Feb 2026 10:47:08 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+    <title>关于本站</title>
+    <link>http://localhost:1313/posts/about-this-site/</link>
+    <pubDate>Mon, 02 Feb 2026 16:36:28 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/about-this-site/</guid>
+    <description><![CDATA[<h1 id="规划准备">规划准备</h1>
+<p>此站于<a href="https://qhfz.edu.cn/" target="_blank" rel="noopener noreffer ">清华附中</a>“极智”挑战期间(2026-01-31~2026-02-06)搭建</p>
+<p>笔者打算使用<a href="https://www.alexsun.one/posts/hugo/" target="_blank" rel="noopener noreffer "><em>hugo</em></a>搭建静态博客网站，然后由nginx处理流量。</p>
+<h1 id="具体操作">具体操作</h1>
+<ol>
+<li>
+<p>配置云服务器</p>
+<p>清华附中为学员提供了<a href="https://www.aliyun.com/benefit/select/ecs" target="_blank" rel="noopener noreffer ">阿里云ECS</a>的服务器，这与笔者在初中时搭建的服务器类型相同。</p>
+<p>在Datacon注册及登录后，可以打开虚拟环境，查看ECS SSH的ip及密码，然后便可以通过SSH远程登录root账号（笔者使用了VSCode的OpenSSH插件）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh -p <span class="m">22</span> root@&lt;your_ip&gt;</span></span></code></pre></div></div>
+<p>随后输入密码即可登录</p>
+</li>
+<li>
+<p>设置域名解析</p>
+<p>注册<a href="https://www.namesilo.com/" target="_blank" rel="noopener noreffer ">Namesilo</a>的账号，并在Namesilo中购买一个域名（笔者购买了alexsun.one，花费24CNY），配置DNS记录，等待10分钟（TTL=3600）后即可全球生效</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Text</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A</td>
+          <td>@</td>
+          <td>&lt;your_ip&gt;</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td>www</td>
+          <td>&lt;your_ip&gt;</td>
+      </tr>
+  </tbody>
+</table>
+<p>查看是否生效的方法：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-batch">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">nslookup <span class="p">&lt;</span>host_name&gt;</span></span></code></pre></div></div>
+<p>如果正确返回&lt;your_ip&gt;，则DNS解析设置成功</p>
+</li>
+<li>
+<p>安装组件</p>
+<h2 id="安装nginx">安装nginx</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">apt install nginx
+</span></span><span class="line"><span class="cl"><span class="c1">#安装nginx</span>
+</span></span><span class="line"><span class="cl">nginx</span></span></code></pre></div></div>
+<p>然后访问http://host_name，若显示nginx欢迎页面，则成功</p>]]></description>
+</item>
+<item>
+    <title>Nginx安全配置</title>
+    <link>http://localhost:1313/posts/computer/nginx-conf/</link>
+    <pubDate>Thu, 05 Feb 2026 10:47:08 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/computer/nginx-conf/</guid>
+    <description><![CDATA[<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@datacon-winterc:~/quickstart# cat /etc/nginx/nginx.conf <span class="p">|</span> grep access_log
+</span></span><span class="line"><span class="cl">access_log /var/log/nginx/access.log<span class="p">;</span> <span class="c1">#nginx访问日志文件</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">grep wp-admin /var/log/nginx/access.log <span class="p">|</span> cat -n
+</span></span><span class="line"><span class="cl"><span class="c1">#查看日志中含wp-admin(wordpress后台)的内容</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>1  162.158.182.84 - - [05/Feb/2026:00:05:25 +0800] &#34;GET /wordpress/wp-admin/setup-config.php HTTP/1.1&#34; 404 134 &#34;-&#34; &#34;https://alexsun.one/wordpress/wp-admin/setup-config.php&#34;
+......
+73  172.71.184.188 - - [05/Feb/2026:10:49:11 +0800] &#34;GET /wp-admin/setup-config.php HTTP/1.1&#34; 444 0 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36&#34;</code></pre></div>
+<p>我的站点上并没有安装WordPress，以上73条访问日志来自于<em><strong>恶意扫描</strong></em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>
+</p>]]></description>
+</item>
+</channel>
+</rss>

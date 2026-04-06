@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>物理 - Category - My New Hugo Site</title>
+        <link>http://localhost:1313/categories/%E7%89%A9%E7%90%86/</link>
+        <description>物理 - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 18 Feb 2026 02:39:06 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/categories/%E7%89%A9%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>每日艺题 DAY005</title>
+    <link>http://localhost:1313/posts/physics/meiri-yiti-day005/</link>
+    <pubDate>Wed, 18 Feb 2026 02:39:06 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/physics/meiri-yiti-day005/</guid>
+    <description><![CDATA[<p></p>
+<p>A.注意卷起来时无法避免正负极板不接触（不能正/负极板与正/负极板自己相接）</p>
+<p>D.正对面积翻倍</p>
+<p>(\boxed{BD})</p>]]></description>
+</item>
+</channel>
+</rss>

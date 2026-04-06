@@ -1,0 +1,65 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>化学 - Category - My New Hugo Site</title>
+        <link>http://localhost:1313/categories/%E5%8C%96%E5%AD%A6/</link>
+        <description>化学 - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 17 Feb 2026 15:00:28 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/categories/%E5%8C%96%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+    <title>每日艺题 DAY004</title>
+    <link>http://localhost:1313/posts/chemistry/meiri-yiti-day004/</link>
+    <pubDate>Tue, 17 Feb 2026 15:00:28 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/chemistry/meiri-yiti-day004/</guid>
+    <description><![CDATA[<h1 id="下列对客观事实的解释错误的是">下列对客观事实的解释错误的是（）</h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">选项</th>
+          <th style="text-align: left">客观事实</th>
+          <th style="text-align: left">解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">A</td>
+          <td style="text-align: left">热稳定性：( NH_4Cl &gt; NH_4F )</td>
+          <td style="text-align: left">( F )的电负性强于 ( Cl )，( HF )的稳定性强于 ( HCl )，( F^- )更易夺取 ( NH_4^+ )中的 ( H^+ )生成 ( HF )，故 ( NH_4F )的热稳定性比 ( NH_4Cl )差。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">B</td>
+          <td style="text-align: left">还原性：( KH &gt; NaH )</td>
+          <td style="text-align: left">( K^+ )的半径大于 ( Na^+ )，( KH )中的离子键较弱，发生化学反应时，( KH )中的离子键更易断裂生成 ( H^+ )，故 ( KH )的还原性强于 ( NaH )。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">C</td>
+          <td style="text-align: left">熔点：( AlCl_3 &gt; AlBr_3 )</td>
+          <td style="text-align: left">( AlCl_3 )是<del>离子晶体</del>，( AlBr_3 )是分子晶体，离子键比分子间作用力强，破坏离子键吸收的能量多，故 ( AlCl_3 )的熔点高于 ( AlBr_3 )。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">D</td>
+          <td style="text-align: left">苯和乙酸（l）混合后体积增大</td>
+          <td style="text-align: left">混合后苯和乙酸分子间平均作用力小于混合前分子间平均作用力，苯和乙酸分子间平均距离比混合前大，故混合后体积增大。</td>
+      </tr>
+  </tbody>
+</table>
+<p>A. A<br>
+B. B<br>
+<strong>C. C</strong><br>
+D. D</p>]]></description>
+</item>
+<item>
+    <title>每日艺题 DAY003</title>
+    <link>http://localhost:1313/posts/chemistry/meiri-yiti-day003/</link>
+    <pubDate>Fri, 13 Feb 2026 17:11:34 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/chemistry/meiri-yiti-day003/</guid>
+    <description><![CDATA[<h1 id="一些零碎的化学知识点">一些零碎的化学知识点</h1>
+<p>1.还原性:(Fe^{2+})&lt;(I^{-})</p>
+<p>2.无机酸酯(硼酸酯,硫酸酯,磷酸酯,硝酸酯)可以类比有机酸酯(碱性条件水解)</p>
+<p>3.反应活性:酰卤 &gt; 酸酐 &gt; 酯 ≈ 羧酸 &gt; 酰胺</p>
+<p>以下图片摘自<a href="http://clayden.lawaxi.net/" target="_blank" rel="noopener noreffer ">Clayden有机化学</a>第十章:
+<a href="https://free.picui.cn/free/2026/02/14/6990400828d96.png" target="_blank" rel="noopener noreffer "></a></p>
+<p><a href="https://free.picui.cn/free/2026/02/14/6990400778234.png" target="_blank" rel="noopener noreffer "></a></p>
+<p><a href="https://free.picui.cn/free/2026/02/14/699040074569f.png" target="_blank" rel="noopener noreffer "></a></p>]]></description>
+</item>
+</channel>
+</rss>

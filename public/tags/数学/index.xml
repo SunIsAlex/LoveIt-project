@@ -1,0 +1,245 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>数学 - Tag - My New Hugo Site</title>
+        <link>http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/</link>
+        <description>数学 - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 27 Mar 2026 22:17:31 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+    <title>26年3月27日课堂复盘</title>
+    <link>http://localhost:1313/posts/math/2026-3-27-lwy-review/</link>
+    <pubDate>Fri, 27 Mar 2026 22:17:31 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/2026-3-27-lwy-review/</guid>
+    <description><![CDATA[<h1 id="两个重要数列">两个重要数列</h1>
+<p>$n\in N^*$,有以下两个数列:</p>
+<ul>
+<li>$a_n=(1+\frac{1}{n})^n$</li>
+<li>$b_n=(1+\frac{1}{n})^{n+1}$</li>
+</ul>
+<p>我们有以下两个结论:</p>
+<ol>
+<li>$a_n\lt e\lt b_n$</li>
+<li>${a_n}$为<strong>递增</strong>数列,${b_n}$为<strong>递减</strong>数列</li>
+<li>${a_n},{b_n}$<strong>收敛</strong>,$\lim_{n \to \infty} a_n=\lim_{n \to \infty} b_n=e$</li>
+</ol>
+<p>我们可以观看<strong>优美的desmos图像</strong>感受性质.
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536417985792" 
+     data-desmos-id="calc-1775514536417985792"
+     data-funcs="a_{n}=\left(1&#43;\frac{1}{n}\right)^{n}\left\{n\ge1\right\}|b_{n}=\left(1&#43;\frac{1}{n}\right)^{n&#43;1}\left\{n\ge1\right\}|y=e\left\{n\ge1\right\}"
+     data-xmin="0"
+     data-xmax="10"
+     data-ymin="0"
+     data-ymax="4"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>
+<p>下面进行证明:</p>
+<p>先证(1),其等价于:</p>
+<p>$$
+\begin{gather}
+n\ln (1+\frac{1}{n})\lt 1 \lt (n+1)\ln (1+\frac{1}{n})\
+\frac{1}{n+1}\lt\ln (1+\frac{1}{n})\lt \frac{1}{n} \
+这其实就是对数不等式链的核心:\
+x^2-x\ge xlnx\\ge x-1\ge lnx\ge 1-\cfrac{1}{x}\\ge \cfrac{lnx}{x}(x=0,x\gt 0)
+\end{gather}
+$$</p>
+<p>对于(2),其证明有两大类流派:</p>
+<h2 id="构造函数导就完了">构造函数(<del>导就完了</del>)</h2>
+<p>取对数可以化简复杂指数,所以:</p>
+<p>${a_n}$为<strong>递增</strong>数列,等价于:</p>
+<p>$$
+\begin{gather}
+n\ln (1+\frac{1}{n})\lt (n+1)\ln (1+\frac{1}{n+1})\
+\frac{\ln (1+\frac{1}{n})}{\frac{1}{n}}\lt \frac{\ln (1+\frac{1}{n+1})}{\frac{1}{n+1}}\
+[一解]\
+构造函数:f(x)=\frac{\ln(x+1)}{x}(0\lt x\le 1)\
+f&rsquo;(x)=\frac{\frac{x}{x+1}-ln(x+1)}{x^2}\
+注意到:\ln (x+1)\gt \frac{x}{x+1}(x\gt 0),有:\
+f&rsquo;(x)\lt 0,f(x)单调递减,又:\
+\frac{1}{n}\gt \frac{1}{n+1}\
+证明完毕.\
+[另解]\
+构造函数g(x)=x[\ln(x+1)-\ln x](x\ge 1)\
+g&rsquo;(x)=\ln \frac{x+1}{x}+\frac{x}{x+1}-1\\gt 1-\frac{x}{x+1}+\frac{x}{x+1}-1=0\
+于是g(x)单调递增,Q.E.D.
+\end{gather}
+$$</p>]]></description>
+</item>
+<item>
+    <title>约束条件最值一百题001</title>
+    <link>http://localhost:1313/posts/math/constrained-extremum-problem001/</link>
+    <pubDate>Fri, 06 Mar 2026 21:56:50 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/constrained-extremum-problem001/</guid>
+    <description><![CDATA[<h2 id="题目">题目</h2>
+<p>已知 $x, y \ge 0$，且满足方程 $x + 4y = x^2 y^3$，求 $(\frac{8}{x} + \frac{1}{y})_{\min}$ 的值。</p>
+<hr>
+<h2 id="解答过程人类阵营">解答过程(人类阵营)</h2>
+<h3 id="消元单变量基本不等式">消元+单变量基本不等式</h3>
+<ol>
+<li>
+<p><strong>将原方程变形为关于 $x$ 的一元二次方程：</strong>
+$$y^3 x^2 - x - 4y = 0$$</p>
+</li>
+<li>
+<p><strong>利用求根公式解出 $x$（取正根）：</strong>
+$$x = \frac{1 + \sqrt{1 + 16y^4}}{2y^3}$$</p>
+</li>
+<li>
+<p><strong>代入待求式 $\frac{8}{x} + \frac{1}{y}$：</strong>
+$$
+\begin{aligned}
+\frac{8}{x} + \frac{1}{y} &amp;= \frac{16y^3}{1 + \sqrt{1 + 16y^4}} + \frac{1}{y} \
+&amp;= \frac{16y^3 (\sqrt{1 + 16y^4} - 1)}{16y^4} + \frac{1}{y} \
+&amp;= \frac{\sqrt{1 + 16y^4} - 1}{y} + \frac{1}{y} \
+&amp;= \frac{\sqrt{1 + 16y^4}}{y} \
+&amp;= \sqrt{\frac{1}{y^2} + 16y^2}
+\end{aligned}
+$$</p>]]></description>
+</item>
+<item>
+    <title>自然对数的估值方法</title>
+    <link>http://localhost:1313/posts/math/lnx-approximation/</link>
+    <pubDate>Thu, 05 Mar 2026 20:54:13 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/lnx-approximation/</guid>
+    <description><![CDATA[<h1 id="泰勒展开">泰勒展开</h1>
+<p>( \ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots + (-1)^{n-1} \frac{x^n}{n} + o(x^n) )
+需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.</p>
+<p>具体内容,可以见<a href="https://www.sunisalex.org/posts/math/taylor-expansion/" target="_blank" rel="noopener noreffer ">浅谈泰勒展开与高考数学</a>.</p>
+<h1 id="帕德逼近">帕德逼近(※)</h1>
+<p>以下是<a href="https://zh.wikipedia.org/zh-sg/%E5%B8%95%E5%BE%B7%E8%BF%91%E4%BC%BC" target="_blank" rel="noopener noreffer ">维基百科</a>给出的简介,这里不加赘述.
+</p>
+<p>总之,一般在<strong>主对角线</strong>[n,n]上(或附近)的<strong>帕德逼近</strong>比较精确.
+[1, 1] 阶:$$\ln(1+x) \approx \frac{x + \frac{1}{2}x^2}{1 + x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x+2}$$(注：$\frac{2x}{x+2}$ 实际上是 $\ln(\frac{1+y}{1-y})$ 的变形，在 $x$ 较小时非常准)</p>
+<p>[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x+1)}{3(x+1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2+4x+1}$$</p>
+<p>
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487657458" 
+     data-desmos-id="calc-1775514536487657458"
+     data-funcs="y=\ln(1&#43;x)|y=\frac{2x}{x&#43;2}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487701208" 
+     data-desmos-id="calc-1775514536487701208"
+     data-funcs="y=\ln(x)|y=\frac{3(x^{2}-1)}{x^{2}&#43;4x&#43;1}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>]]></description>
+</item>
+<item>
+    <title>每日艺题 DAY002</title>
+    <link>http://localhost:1313/posts/math/meiri-yiti-day002/</link>
+    <pubDate>Thu, 12 Feb 2026 16:54:26 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/meiri-yiti-day002/</guid>
+    <description><![CDATA[<h1 id="a_ns_n联袂数列有通项">(a_n)(S_n)联袂数列(有通项)</h1>
+<p>$$
+\begin{gather}
+a_nS_n=\cfrac{1}{4^n},a_1&gt;0,求a_n.
+\end{gather}
+$$</p>
+<h2 id="attempt1">Attempt1:</h2>
+<p>$$
+\begin{gather}
+消去S_n:S_n=\cfrac{1}{a_n4^n}\
+S_{n+1}=\cfrac{1}{a_{n+1}4^{n+1}}\
+a_{n+1}=\cfrac{1}{4^{n+1}}({\cfrac{1}{a_{n+1}}-\cfrac{4}{a_n}})\
+=\cfrac{1}{4^{n+1}}({\cfrac{a_{n}-4a_{n+1}}{a_na_{n+1}}})
+\end{gather}
+$$</p>
+<p>这样的形式还是太复杂了,遂放弃.</p>
+<h2 id="attempt2">Attempt2:</h2>
+<p>$$
+\begin{gather}
+消a_n:(S_{n}-S_{n-1})S_n=\cfrac{1}{4^n}\
+可以把\cfrac{1}{4^n}“雨露均沾”分给两个因式\
+令b_n=2^nS_n,有:\
+(b_{n}-2b_{n-1})b_n=1\
+即:{b_n}^2-2b_{n-1}b_n=1\
+从b_{n-1}到b_n比较困难,需要用求根公式,\
+何不反其道而行之?\
+b_{n-1}=\cfrac{{b_n}^2-1}{2b_n}\
+我们惊喜的发现,\式子的形式类似于正切二倍角公式:\
+遂令c_n=\cfrac{1}{b_n}=tan(θ_n)&gt;0(θ_n&gt;0),\
+tan(θ_{n-1})=c_{n-1}=\cfrac{2b_n}{{b_n}^2-1}\=\cfrac{2c_n}{1-{c_n}^2}=tan(2θ_n)\
+于是θ_n=\cfrac{θ_{n-1}}{2},我们便构建了从n-1到n的递推.\
+S_1=a_1=\cfrac{1}{2},b_1=1,c_1=1=tan(θ_1).\
+则θ_1=\cfrac{π}{4},θ_n=\cfrac{π}{2^{n+1}}.
+S_n=\cfrac{b_n}{2^n}=\cfrac{1}{2^nc_n}\=\cfrac{1}{2^ntan(\cfrac{π}{2^{n+1}})},\
+a_n=S_n-S_{n-1}\=\cfrac{1}{2^ntan(\cfrac{π}{2^{n+1}})}-\cfrac{1}{2^{n-1}tan(\cfrac{π}{2^{n}})}(n\ge 2)\
+把tan写成cot就不会有定义域的问题:\a_n=\cfrac{cot(\cfrac{π}{2^{n+1}})}{2^n}-\cfrac{cot(\cfrac{π}{2^{n}})}{2^{n-1}}(n\ge 1)
+\end{gather}
+$$
+通项还可以继续化简:
+$$
+\begin{gather}
+∵cot(x)-2cot(2x)=tan(x)\
+∴a_n=\cfrac{tan(\cfrac{π}{2^{n+1}})}{2^n}(n\ge 1)
+\end{gather}
+$$</p>]]></description>
+</item>
+<item>
+    <title>每日艺题 DAY001</title>
+    <link>http://localhost:1313/posts/math/meiri-yiti-day001/</link>
+    <pubDate>Tue, 10 Feb 2026 17:31:25 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/meiri-yiti-day001/</guid>
+    <description><![CDATA[<h1 id="s_na_n联袂数列无通项">(S_{n},a_{n})联袂数列(无通项)</h1>
+<p><strong>题目：</strong></p>
+<blockquote>
+<p>已知 ({a_n}) 是各项均为正数的无穷数列,其前 (n) 项和为 (S_n),且<br>
+[
+a_n + S_n = a_n S_n \quad (n \in \mathbb{N}^<em>)
+]<br>
+给出下列四个结论：
+① (a_2 = \sqrt{2})；<br>
+② 存在一个正数 (m_0),使得对任意的 (n \in \mathbb{N}^</em>),都有 (S_n &lt; m_0)；<br>
+③ 数列 ({a_n}) 单调递减；<br>
+④ 对任意的 (n \in \mathbb{N}^*),(n \geq 2),都有 (a_{n-1} + a_{n+1} &gt; 2a_n)。<br>
+其中所有正确结论的序号是___。
+(SRC:北京101中2025-2026第一学期高三数学统练二)</p>
+</blockquote>
+<p>先算几项,寻找规律：</p>
+<table>
+  <thead>
+      <tr>
+          <th>n</th>
+          <th>(a_{n})</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>(\sqrt{2})</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>(\cfrac{-\sqrt{2}+\sqrt{10+4\sqrt{2}}}{2} )</td>
+      </tr>
+  </tbody>
+</table>
+<p>根据计算,<strong>①正确</strong>.</p>
+<p>到第三项,数列已经开始<del>崩坏</del>不好算了.</p>
+<p>可以预见的是,通项应该是没戏的.</p>
+<p>不过大概可以看出,(a_{3}\lt \cfrac{-\sqrt{2}+\sqrt{18}}{2}=\sqrt{2}=a_{2}\lt a_{1} ),数列({a_{n}})是递减数列.</p>
+<p>这也比较符合直觉,(a_{n}=\cfrac{S_{n}}{S_{n}-1}=1+\cfrac{1}{S_{n}-1}),而(a_{n}\gt 0,S_{n})单调递增,那么(a_{n})必然单调递减,并且始终大于1.</p>]]></description>
+</item>
+</channel>
+</rss>

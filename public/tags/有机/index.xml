@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>有机 - Tag - My New Hugo Site</title>
+        <link>http://localhost:1313/tags/%E6%9C%89%E6%9C%BA/</link>
+        <description>有机 - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 13 Feb 2026 17:11:34 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%9C%89%E6%9C%BA/" rel="self" type="application/rss+xml" /><item>
+    <title>每日艺题 DAY003</title>
+    <link>http://localhost:1313/posts/chemistry/meiri-yiti-day003/</link>
+    <pubDate>Fri, 13 Feb 2026 17:11:34 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/chemistry/meiri-yiti-day003/</guid>
+    <description><![CDATA[<h1 id="一些零碎的化学知识点">一些零碎的化学知识点</h1>
+<p>1.还原性:(Fe^{2+})&lt;(I^{-})</p>
+<p>2.无机酸酯(硼酸酯,硫酸酯,磷酸酯,硝酸酯)可以类比有机酸酯(碱性条件水解)</p>
+<p>3.反应活性:酰卤 &gt; 酸酐 &gt; 酯 ≈ 羧酸 &gt; 酰胺</p>
+<p>以下图片摘自<a href="http://clayden.lawaxi.net/" target="_blank" rel="noopener noreffer ">Clayden有机化学</a>第十章:
+<a href="https://free.picui.cn/free/2026/02/14/6990400828d96.png" target="_blank" rel="noopener noreffer "></a></p>
+<p><a href="https://free.picui.cn/free/2026/02/14/6990400778234.png" target="_blank" rel="noopener noreffer "></a></p>
+<p><a href="https://free.picui.cn/free/2026/02/14/699040074569f.png" target="_blank" rel="noopener noreffer "></a></p>]]></description>
+</item>
+</channel>
+</rss>

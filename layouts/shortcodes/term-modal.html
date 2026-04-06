@@ -1,0 +1,28 @@
+{{- $term := .Inner | markdownify -}}
+
+{{- $filename := .Get "file" -}}   <!-- 使用方式：file="llm.md" 或 file="taylor.md" -->
+
+{{- if not $filename -}}
+  {{- errorf "term-modal 需要 file 参数，例如 file=\"llm.md\"" .Position -}}
+{{- end -}}
+
+<!-- 在 assets/md/ 目录下查找文件 -->
+{{- $mdResource := resources.Get (printf "md/%s" $filename) -}}
+
+{{- if not $mdResource -}}
+  {{- errorf "在 assets/md/ 下找不到文件：%s" $filename -}}
+{{- end -}}
+
+<!-- 获取渲染后的 HTML 内容 -->
+{{- $rendered := $mdResource.Content | markdownify | safeHTML -}}
+
+<!-- 生成唯一 ID -->
+{{- $id := .Get "id" | default (md5 $filename) -}}
+
+<!-- 触发器：使用 sup 星星，避免换行问题 -->
+<span class="term-modal-trigger" 
+      id="{{ $id }}"
+      data-content="{{ $rendered | base64Encode }}">   <!-- base64 编码传递渲染结果 -->
+  <span class="term-text">{{ $term }}<sup class="term-star">★</sup></span>
+</span>
+

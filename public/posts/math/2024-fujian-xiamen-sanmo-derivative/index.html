@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>变态难の对数Pade逼近 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="变态难の对数Pade逼近">
+  <meta property="og:description" content="本文围绕对数函数 $\ln x$ 与 $\ln(1&#43;x)$ 的 Padé 逼近与不等式放缩 展开，系统总结了一类高考常见的估值与比较技巧。">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-03T20:48:40+08:00">
+    <meta property="article:modified_time" content="2026-04-03T20:48:40+08:00">
+    <meta property="article:tag" content="导数">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="变态难の对数Pade逼近">
+  <meta name="twitter:description" content="本文围绕对数函数 $\ln x$ 与 $\ln(1&#43;x)$ 的 Padé 逼近与不等式放缩 展开，系统总结了一类高考常见的估值与比较技巧。">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" /><link rel="prev" href="http://localhost:1313/posts/math/2026-3-27-lwy-review/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "变态难の对数Pade逼近",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/math\/2024-fujian-xiamen-sanmo-derivative\/"
+        },"genre": "posts","keywords": "导数","wordcount":  247 ,
+        "url": "http:\/\/localhost:1313\/posts\/math\/2024-fujian-xiamen-sanmo-derivative\/","datePublished": "2026-04-03T20:48:40+08:00","dateModified": "2026-04-03T20:48:40+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">变态难の对数Pade逼近</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6/"><i class="far fa-folder" aria-hidden="true"></i>高考数学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-04-03">2026-04-03</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;247 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-summarychatgpt">📌 Summary(ChatGPT)</a>
+      <ul>
+        <li><a href="#-核心结论">🔑 核心结论</a></li>
+        <li><a href="#-方法应用">📊 方法应用</a></li>
+        <li><a href="#-重要思想">📈 重要思想</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775220341946.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775220341946.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775220341946.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775220341946.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775220341946.jpg"
+        title="题干" width="1091" height="1619" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221551076.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221551076.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221551076.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221551076.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221551076.jpg"
+        title="alt text" width="966" height="2236" /> <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221558477.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221558477.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221558477.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221558477.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775221558477.jpg"
+        title="alt text" width="1114" height="2215" />
+$$
+\begin{cases}
+\ln x\lt \frac{3(x^2-1)}{x^2+4x+1}, &amp; 0 \lt x \lt 1 \
+\ln x\gt \frac{3(x^2-1)}{x^2+4x+1}, &amp; x \gt 1
+\end{cases}
+$$</p>
+<p>$$
+\begin{cases}
+\ln (x+1)\lt \frac{3x^2+6x}{x^2+6x+6}, &amp; -1 \lt x \lt 0 \
+\ln (x+1)\gt \frac{3x^2+6x}{x^2+6x+6}, &amp; x \gt 0
+\end{cases}
+$$</p>
+<p>$$
+\begin{cases}
+\ln x\lt \frac{x^2+4x-5}{4x+2},\
+\ln (x+1)\lt \frac{x^2+6x}{4x+6}
+\end{cases}
+$$
+关于$\ln x$和$\ln(x+1)$的不等式,可以由<strong>平移</strong>互相推出,所以<strong>精度是一致</strong>的.</p>
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536402982042" 
+     data-desmos-id="calc-1775514536402982042"
+     data-funcs="y=\ln x|y=\frac{3(x^2-1)}{x^2&#43;4x&#43;1}|y=\frac{x^2&#43;4x-5}{4x&#43;2}"
+     data-xmin="0"
+     data-xmax="5"
+     data-ymin="-5"
+     data-ymax="5"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536403093084" 
+     data-desmos-id="calc-1775514536403093084"
+     data-funcs="y=\ln (x&#43;1)|y=\frac{3x^2&#43;6x}{x^2&#43;6x&#43;6}|y=\frac{x^2&#43;6x}{4x&#43;6}"
+     data-xmin="-1"
+     data-xmax="4"
+     data-ymin="-5"
+     data-ymax="5"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+<p>注意,这些不等式只有在<strong>接近取等条件</strong>时精度才高,所以对于<strong>偏离取等条件</strong>的对数估值,可以进行<strong>数值分拆</strong>.</p>
+<ol>
+<li>估计$\ln 2$的近似值.(精确到0.001)</li>
+</ol>
+<p>$$
+\ln 2=\ln \frac{4}{3}+\ln \frac{5}{4}+\ln \frac{6}{5}\
+这里我们用\ln(x+1)的帕德逼近进行估值:\
+\ln \frac{4}{3}\lt \frac{(\frac{1}{3})^2+6(\frac{1}{3})}{4(\frac{1}{3})+6}=\frac{19}{66}\lt 0.2879\
+\ln \frac{5}{4}\lt \frac{(\frac{1}{4})^2+6(\frac{1}{4})}{4(\frac{1}{4})+6}=\frac{25}{112}\lt 0.2233\
+\ln \frac{6}{5}\lt \frac{(\frac{1}{5})^2+6(\frac{1}{5})}{4(\frac{1}{5})+6}=\frac{31}{170}\lt 0.1824\
+\ln 2\lt 0.2879+0.2233+0.1824=0.6936\
+\ln \frac{4}{3}\gt \frac{3(\frac{1}{3})^2+6(\frac{1}{3})}{(\frac{1}{3})^2+6(\frac{1}{3})+6}=\frac{21}{73}\gt 0.2876\
+\ln \frac{5}{4}\gt \frac{3(\frac{1}{4})^2+6(\frac{1}{4})}{(\frac{1}{4})^2+6(\frac{1}{4})+6}=\frac{27}{121}\gt 0.2231\
+\ln \frac{6}{5}\gt \frac{3(\frac{1}{5})^2+6(\frac{1}{5})}{(\frac{1}{5})^2+6(\frac{1}{5})+6}=\frac{33}{181}\gt 0.1823\
+\ln 2\gt 0.2876+0.2231+0.1823=0.6930\
+综上,\ln 2\approx 0.693\
+如果直接用Pade逼近,得到:\
+\ln 2\lt \frac{(1)^2+6(1)}{4(1)+6}=\frac{7}{10}=0.7\
+\ln 2\gt \frac{3(1)^2+6(1)}{(1)^2+6(1)+6}=\frac{9}{13}\gt 0.6923\
+精度是远远不够的
+$$
+题目出处及标答:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382638421.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382638421.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382638421.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382638421.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382638421.jpg"
+        title="alt text" width="1866" height="358" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382642931.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382642931.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382642931.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382642931.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775382642931.jpg"
+        title="alt text" width="2250" height="2917" /></p>
+<ol start="2">
+<li>证明:$(\frac{6}{5})^{\sqrt{3}}\gt(\frac{5}{4})^{\sqrt{2}}$</li>
+</ol>
+<p>不等式两边取对数,得:</p>
+<p>$$
+\sqrt{3}\ln \frac{6}{5}\gt \sqrt{2}\ln \frac{5}{4}\
+由(1)中结论,\sqrt{3}\ln \frac{6}{5}\gt \sqrt{3}\frac{33}{181}\gt \sqrt{2}\frac{25}{112}\gt \sqrt{2}\ln \frac{5}{4}\
+这相当于:\
+\frac{3}{2}\gt (\frac{4525}{3696})^2\
+(\frac{4525}{3696})^2\lt (\frac{4525}{3695})^2=(\frac{905}{739})^2\lt 1.2247^2\lt 1.5\
+Q.E.D
+$$</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775383794762.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775383794762.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775383794762.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775383794762.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775383794762.jpg"
+        title="alt text" width="1980" height="1906" /></p>
+<p>法一构造函数惊为天人(观察到30=6x5,20=5x4).</p>
+<p>如果提前消去不等式两边相同的部分,就不需要Pade逼近这么高精度的放缩了.</p>
+<ol start="3">
+<li>(2021全国乙卷)排序$a=2\ln 1.01,b=\ln 1.02,c=\sqrt{1.04}-1$</li>
+</ol>
+<p>由琴生不等式:
+$b+\ln 1\lt 2\ln 1.01$,故$b\lt a$</p>
+<p>估计$\ln(x+1)$时,如果$x\approx 0$,可以不用Pade逼近,改用<strong>飘带函数</strong>.</p>
+<p>$1+2\ln(1.01)\gt 1+2\times\frac{2(1.01-1)}{1.01+1}=\frac{205}{201}$</p>
+<p>$\frac{205^2}{201^2}-1=\frac{4\times 406}{201^2}\gt 0.04$</p>
+<p>由<strong>广义二项式定理</strong>:( (1+x)^a = 1 + ax + \frac{a(a-1)}{2!}x^2 + \cdots + \frac{a(a-1)\cdots(a-n+1)}{n!}x^n + o(x^n) )</p>
+<p>$(1+0.04)^{0.5}\gt 1+0.04\times 0.5-0.04^2\times 0.125=1.0198$</p>
+<p>故$a\gt c$,下面比较$c,b$.</p>
+<p>$1+b\lt 1+\frac{(\frac{1}{50})^2+6(\frac{1}{50})}{4(\frac{1}{50})+6}=\frac{15501}{15200}\lt \sqrt{1.04}$</p>
+<p>实际上$b,c$的数值比较是困难的,应该构造函数比较.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775468865164.jpg"
+        data-srcset="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775468865164.jpg, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775468865164.jpg 1.5x, /posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775468865164.jpg 2x"
+        data-sizes="auto"
+        alt="/posts/math/2024-fujian-xiamen-sanmo-derivative/zyb_1775468865164.jpg"
+        title="alt text" width="1448" height="1224" /></p>
+<ol start="4">
+<li>证明:
+<ul>
+<li>$x\gt 1$时,$\frac{1}{2}(x-\frac{1}{x})&gt;\ln x&gt;\frac{3x^2-3}{x^2+4x+1}&gt;2\frac{x-1}{x+1}$</li>
+<li>$1\gt x\gt 0$时,$\frac{1}{2}(x-\frac{1}{x})&lt;\ln x&lt;\frac{3x^2-3}{x^2+4x+1}&lt;2\frac{x-1}{x+1}$</li>
+</ul>
+</li>
+</ol>
+<h2 id="-summarychatgpt">📌 Summary(ChatGPT)</h2>
+<p>本文围绕对数函数 $\ln x$ 与 $\ln(1+x)$ 的 <strong>Padé 逼近与不等式放缩</strong> 展开，系统总结了一类高考常见的估值与比较技巧。</p>
+<h3 id="-核心结论">🔑 核心结论</h3>
+<ul>
+<li>
+<p>构造了两组经典逼近不等式：
+$$
+\ln x \sim \frac{3(x^2-1)}{x^2+4x+1}, \quad
+\ln(1+x) \sim \frac{3x^2+6x}{x^2+6x+6}
+$$
+二者可通过变量平移互相转化，且在取等点附近具有较高精度。</p>
+</li>
+<li>
+<p>给出了更简洁但精度略低的放缩形式：
+$$
+\ln x &lt; \frac{x^2+4x-5}{4x+2}, \quad
+\ln(1+x) &lt; \frac{x^2+6x}{4x+6}
+$$</p>
+</li>
+<li>
+<p>强调：<strong>Padé 逼近是局部最优近似</strong>，仅在接近展开点时精度较高，远离时需通过<strong>数值分拆</strong>提升精度。</p>
+</li>
+</ul>
+<hr>
+<h3 id="-方法应用">📊 方法应用</h3>
+<ul>
+<li>利用分拆 + Padé 逼近，高精度估算 $\ln 2$</li>
+<li>构造不等式链，比较指数大小</li>
+<li>结合琴生不等式与“飘带函数”处理小量对数</li>
+<li>构造函数解决复杂大小关系问题</li>
+</ul>
+<hr>
+<h3 id="-重要思想">📈 重要思想</h3>
+<ul>
+<li>用 Padé 逼近构造“高精度放缩”</li>
+<li>利用平移统一 $\ln x$ 与 $\ln(1+x)$</li>
+<li>通过分拆将“大偏差”转化为“多个小偏差”</li>
+<li>在不同区间建立分段不等式结构</li>
+</ul>
+<hr>
+<blockquote>
+<p>💡 核心思想：<br>
+<strong>通过 Padé 逼近构造精确不等式，结合分拆与函数性质，实现对数函数的高精度估值与大小比较。</strong></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-04-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-title="变态难の对数Pade逼近" data-hashtags="导数"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-title="变态难の对数Pade逼近"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-hashtag="导数"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-title="变态难の对数Pade逼近"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-title="变态难の对数Pade逼近"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-title="变态难の对数Pade逼近"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/" data-title="变态难の对数Pade逼近" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fmath%2f2024-fujian-xiamen-sanmo-derivative%2f&amp;text=%e5%8f%98%e6%80%81%e9%9a%be%e3%81%ae%e5%af%b9%e6%95%b0Pade%e9%80%bc%e8%bf%91" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%AF%BC%E6%95%B0/">导数</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/math/2026-3-27-lwy-review/" class="prev" rel="prev" title="26年3月27日课堂复盘"><i class="fas fa-angle-left" aria-hidden="true"></i>26年3月27日课堂复盘</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

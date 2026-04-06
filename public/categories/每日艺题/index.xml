@@ -1,0 +1,109 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>每日艺题 - Category - My New Hugo Site</title>
+        <link>http://localhost:1313/categories/%E6%AF%8F%E6%97%A5%E8%89%BA%E9%A2%98/</link>
+        <description>每日艺题 - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 12 Feb 2026 16:54:26 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E6%AF%8F%E6%97%A5%E8%89%BA%E9%A2%98/" rel="self" type="application/rss+xml" /><item>
+    <title>每日艺题 DAY002</title>
+    <link>http://localhost:1313/posts/math/meiri-yiti-day002/</link>
+    <pubDate>Thu, 12 Feb 2026 16:54:26 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/meiri-yiti-day002/</guid>
+    <description><![CDATA[<h1 id="a_ns_n联袂数列有通项">(a_n)(S_n)联袂数列(有通项)</h1>
+<p>$$
+\begin{gather}
+a_nS_n=\cfrac{1}{4^n},a_1&gt;0,求a_n.
+\end{gather}
+$$</p>
+<h2 id="attempt1">Attempt1:</h2>
+<p>$$
+\begin{gather}
+消去S_n:S_n=\cfrac{1}{a_n4^n}\
+S_{n+1}=\cfrac{1}{a_{n+1}4^{n+1}}\
+a_{n+1}=\cfrac{1}{4^{n+1}}({\cfrac{1}{a_{n+1}}-\cfrac{4}{a_n}})\
+=\cfrac{1}{4^{n+1}}({\cfrac{a_{n}-4a_{n+1}}{a_na_{n+1}}})
+\end{gather}
+$$</p>
+<p>这样的形式还是太复杂了,遂放弃.</p>
+<h2 id="attempt2">Attempt2:</h2>
+<p>$$
+\begin{gather}
+消a_n:(S_{n}-S_{n-1})S_n=\cfrac{1}{4^n}\
+可以把\cfrac{1}{4^n}“雨露均沾”分给两个因式\
+令b_n=2^nS_n,有:\
+(b_{n}-2b_{n-1})b_n=1\
+即:{b_n}^2-2b_{n-1}b_n=1\
+从b_{n-1}到b_n比较困难,需要用求根公式,\
+何不反其道而行之?\
+b_{n-1}=\cfrac{{b_n}^2-1}{2b_n}\
+我们惊喜的发现,\式子的形式类似于正切二倍角公式:\
+遂令c_n=\cfrac{1}{b_n}=tan(θ_n)&gt;0(θ_n&gt;0),\
+tan(θ_{n-1})=c_{n-1}=\cfrac{2b_n}{{b_n}^2-1}\=\cfrac{2c_n}{1-{c_n}^2}=tan(2θ_n)\
+于是θ_n=\cfrac{θ_{n-1}}{2},我们便构建了从n-1到n的递推.\
+S_1=a_1=\cfrac{1}{2},b_1=1,c_1=1=tan(θ_1).\
+则θ_1=\cfrac{π}{4},θ_n=\cfrac{π}{2^{n+1}}.
+S_n=\cfrac{b_n}{2^n}=\cfrac{1}{2^nc_n}\=\cfrac{1}{2^ntan(\cfrac{π}{2^{n+1}})},\
+a_n=S_n-S_{n-1}\=\cfrac{1}{2^ntan(\cfrac{π}{2^{n+1}})}-\cfrac{1}{2^{n-1}tan(\cfrac{π}{2^{n}})}(n\ge 2)\
+把tan写成cot就不会有定义域的问题:\a_n=\cfrac{cot(\cfrac{π}{2^{n+1}})}{2^n}-\cfrac{cot(\cfrac{π}{2^{n}})}{2^{n-1}}(n\ge 1)
+\end{gather}
+$$
+通项还可以继续化简:
+$$
+\begin{gather}
+∵cot(x)-2cot(2x)=tan(x)\
+∴a_n=\cfrac{tan(\cfrac{π}{2^{n+1}})}{2^n}(n\ge 1)
+\end{gather}
+$$</p>]]></description>
+</item>
+<item>
+    <title>每日艺题 DAY001</title>
+    <link>http://localhost:1313/posts/math/meiri-yiti-day001/</link>
+    <pubDate>Tue, 10 Feb 2026 17:31:25 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/meiri-yiti-day001/</guid>
+    <description><![CDATA[<h1 id="s_na_n联袂数列无通项">(S_{n},a_{n})联袂数列(无通项)</h1>
+<p><strong>题目：</strong></p>
+<blockquote>
+<p>已知 ({a_n}) 是各项均为正数的无穷数列,其前 (n) 项和为 (S_n),且<br>
+[
+a_n + S_n = a_n S_n \quad (n \in \mathbb{N}^<em>)
+]<br>
+给出下列四个结论：
+① (a_2 = \sqrt{2})；<br>
+② 存在一个正数 (m_0),使得对任意的 (n \in \mathbb{N}^</em>),都有 (S_n &lt; m_0)；<br>
+③ 数列 ({a_n}) 单调递减；<br>
+④ 对任意的 (n \in \mathbb{N}^*),(n \geq 2),都有 (a_{n-1} + a_{n+1} &gt; 2a_n)。<br>
+其中所有正确结论的序号是___。
+(SRC:北京101中2025-2026第一学期高三数学统练二)</p>
+</blockquote>
+<p>先算几项,寻找规律：</p>
+<table>
+  <thead>
+      <tr>
+          <th>n</th>
+          <th>(a_{n})</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>(\sqrt{2})</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>(\cfrac{-\sqrt{2}+\sqrt{10+4\sqrt{2}}}{2} )</td>
+      </tr>
+  </tbody>
+</table>
+<p>根据计算,<strong>①正确</strong>.</p>
+<p>到第三项,数列已经开始<del>崩坏</del>不好算了.</p>
+<p>可以预见的是,通项应该是没戏的.</p>
+<p>不过大概可以看出,(a_{3}\lt \cfrac{-\sqrt{2}+\sqrt{18}}{2}=\sqrt{2}=a_{2}\lt a_{1} ),数列({a_{n}})是递减数列.</p>
+<p>这也比较符合直觉,(a_{n}=\cfrac{S_{n}}{S_{n}-1}=1+\cfrac{1}{S_{n}-1}),而(a_{n}\gt 0,S_{n})单调递增,那么(a_{n})必然单调递减,并且始终大于1.</p>]]></description>
+</item>
+</channel>
+</rss>

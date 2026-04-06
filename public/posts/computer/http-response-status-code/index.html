@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HTTP状态码 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/computer/http-response-status-code/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="HTTP状态码">
+  <meta property="og:description" content="以下是用简体中文整理的 HTTP 状态码 介绍表格，按类别（1xx ~ 5xx）分类，包含最常用和比较重要的状态码，以及简洁说明。
+HTTP 状态码分类总览 分类 含义 典型场景说明 1xx 信息性响应（临时） 请求已收到，正在处理，需要客户端继续操作 2xx 成功 请求被成功接收、理解和处理 3xx 重定向 需要进一步操作才能完成请求（通常跳转） 4xx 客户端错误 请求有问题（客户端的责任） 5xx 服务器错误 服务器处理请求时出错（服务器的责任） 详细状态码表格 1xx - 信息响应（较少直接看到） 状态码 英文名称 中文说明 常见用途说明 100 Continue 继续 客户端应继续发送请求正文 101 Switching Protocols 切换协议 服务器同意切换协议（如升级到 WebSocket） 102 Processing 正在处理 WebDAV 专用，防止超时 2xx - 成功响应 状态码 英文名称 中文说明 常见用途说明 200 OK 请求成功 最常见，GET/POST 正常返回数据 201 Created 已创建 POST/PUT 创建资源成功 202 Accepted 已接受 请求已接受但尚未处理（如异步任务） 204 No Content 无内容 请求成功，但无返回主体（常用于 DELETE） 206 Partial Content 部分内容 Range 请求，返回部分资源 3xx - 重定向 状态码 英文名称 中文说明 常见用途说明 301 Moved Permanently 永久移动 资源永久迁移，SEO 友好（权重传递） 302 Found (临时重定向) 临时重定向 临时跳转，浏览器会跟随但不改书签 303 See Other 参见其他 POST 后重定向到 GET（防止重复提交） 304 Not Modified 未修改 缓存有效，客户端可使用本地缓存 307 Temporary Redirect 临时重定向（严格） 与 302 类似，但方法不改变 308 Permanent Redirect 永久重定向（严格） 与 301 类似，但方法不改变 4xx - 客户端错误 状态码 英文名称 中文说明 常见用途说明 400 Bad Request 请求错误 参数格式错误、语法错误 401 Unauthorized 未授权 需要身份验证（登录） 403 Forbidden 禁止访问 权限不足，无权访问该资源 404 Not Found 未找到 资源不存在（最常见错误页） 405 Method Not Allowed 方法不允许 如用 GET 访问只支持 POST 的接口 429 Too Many Requests 请求过多 触发限流/频率限制 451 Unavailable For Legal Reasons 因法律原因不可用 内容因法律要求被屏蔽 5xx - 服务器错误 状态码 英文名称 中文说明 常见用途说明 500 Internal Server Error 服务器内部错误 最常见的服务器崩溃/代码异常 502 Bad Gateway 网关错误 上游服务器（反向代理后端）无效响应 503 Service Unavailable 服务不可用 服务器超载、维护中、过载保护 504 Gateway Timeout 网关超时 上游服务器响应超时 这些是日常开发、运维、SEO、调试中最常遇到的状态码，已覆盖 95% 以上的实际使用场景。如果需要更完整的列表（包括 WebDAV、HTTP/2 扩展等非常用码），可以参考 MDN 或 IANA 官方注册表。">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-06T10:51:13+08:00">
+    <meta property="article:modified_time" content="2026-02-06T10:51:13+08:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HTTP状态码">
+  <meta name="twitter:description" content="以下是用简体中文整理的 HTTP 状态码 介绍表格，按类别（1xx ~ 5xx）分类，包含最常用和比较重要的状态码，以及简洁说明。
+HTTP 状态码分类总览 分类 含义 典型场景说明 1xx 信息性响应（临时） 请求已收到，正在处理，需要客户端继续操作 2xx 成功 请求被成功接收、理解和处理 3xx 重定向 需要进一步操作才能完成请求（通常跳转） 4xx 客户端错误 请求有问题（客户端的责任） 5xx 服务器错误 服务器处理请求时出错（服务器的责任） 详细状态码表格 1xx - 信息响应（较少直接看到） 状态码 英文名称 中文说明 常见用途说明 100 Continue 继续 客户端应继续发送请求正文 101 Switching Protocols 切换协议 服务器同意切换协议（如升级到 WebSocket） 102 Processing 正在处理 WebDAV 专用，防止超时 2xx - 成功响应 状态码 英文名称 中文说明 常见用途说明 200 OK 请求成功 最常见，GET/POST 正常返回数据 201 Created 已创建 POST/PUT 创建资源成功 202 Accepted 已接受 请求已接受但尚未处理（如异步任务） 204 No Content 无内容 请求成功，但无返回主体（常用于 DELETE） 206 Partial Content 部分内容 Range 请求，返回部分资源 3xx - 重定向 状态码 英文名称 中文说明 常见用途说明 301 Moved Permanently 永久移动 资源永久迁移，SEO 友好（权重传递） 302 Found (临时重定向) 临时重定向 临时跳转，浏览器会跟随但不改书签 303 See Other 参见其他 POST 后重定向到 GET（防止重复提交） 304 Not Modified 未修改 缓存有效，客户端可使用本地缓存 307 Temporary Redirect 临时重定向（严格） 与 302 类似，但方法不改变 308 Permanent Redirect 永久重定向（严格） 与 301 类似，但方法不改变 4xx - 客户端错误 状态码 英文名称 中文说明 常见用途说明 400 Bad Request 请求错误 参数格式错误、语法错误 401 Unauthorized 未授权 需要身份验证（登录） 403 Forbidden 禁止访问 权限不足，无权访问该资源 404 Not Found 未找到 资源不存在（最常见错误页） 405 Method Not Allowed 方法不允许 如用 GET 访问只支持 POST 的接口 429 Too Many Requests 请求过多 触发限流/频率限制 451 Unavailable For Legal Reasons 因法律原因不可用 内容因法律要求被屏蔽 5xx - 服务器错误 状态码 英文名称 中文说明 常见用途说明 500 Internal Server Error 服务器内部错误 最常见的服务器崩溃/代码异常 502 Bad Gateway 网关错误 上游服务器（反向代理后端）无效响应 503 Service Unavailable 服务不可用 服务器超载、维护中、过载保护 504 Gateway Timeout 网关超时 上游服务器响应超时 这些是日常开发、运维、SEO、调试中最常遇到的状态码，已覆盖 95% 以上的实际使用场景。如果需要更完整的列表（包括 WebDAV、HTTP/2 扩展等非常用码），可以参考 MDN 或 IANA 官方注册表。">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/computer/http-response-status-code/" /><link rel="prev" href="http://localhost:1313/posts/computer/nginx-conf/" /><link rel="next" href="http://localhost:1313/posts/computer/fix-uefi-boot/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HTTP状态码",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/computer\/http-response-status-code\/"
+        },"genre": "posts","wordcount":  212 ,
+        "url": "http:\/\/localhost:1313\/posts\/computer\/http-response-status-code\/","datePublished": "2026-02-06T10:51:13+08:00","dateModified": "2026-02-06T10:51:13+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Grok"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HTTP状态码</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Grok</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BD%91%E7%BB%9C/"><i class="far fa-folder" aria-hidden="true"></i>网络</a>&nbsp;<a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"><i class="far fa-folder" aria-hidden="true"></i>网站建设</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-06">2026-02-06</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;212 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#http-状态码分类总览">HTTP 状态码分类总览</a></li>
+        <li><a href="#详细状态码表格">详细状态码表格</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>以下是用简体中文整理的 <strong>HTTP 状态码</strong> 介绍表格，按类别（1xx ~ 5xx）分类，包含最常用和比较重要的状态码，以及简洁说明。</p>
+<h3 id="http-状态码分类总览">HTTP 状态码分类总览</h3>
+<table>
+  <thead>
+      <tr>
+          <th>分类</th>
+          <th>含义</th>
+          <th>典型场景说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1xx</td>
+          <td>信息性响应（临时）</td>
+          <td>请求已收到，正在处理，需要客户端继续操作</td>
+      </tr>
+      <tr>
+          <td>2xx</td>
+          <td>成功</td>
+          <td>请求被成功接收、理解和处理</td>
+      </tr>
+      <tr>
+          <td>3xx</td>
+          <td>重定向</td>
+          <td>需要进一步操作才能完成请求（通常跳转）</td>
+      </tr>
+      <tr>
+          <td>4xx</td>
+          <td>客户端错误</td>
+          <td>请求有问题（客户端的责任）</td>
+      </tr>
+      <tr>
+          <td>5xx</td>
+          <td>服务器错误</td>
+          <td>服务器处理请求时出错（服务器的责任）</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="详细状态码表格">详细状态码表格</h3>
+<h4 id="1xx---信息响应较少直接看到">1xx - 信息响应（较少直接看到）</h4>
+<table>
+  <thead>
+      <tr>
+          <th>状态码</th>
+          <th>英文名称</th>
+          <th>中文说明</th>
+          <th>常见用途说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>100</td>
+          <td>Continue</td>
+          <td>继续</td>
+          <td>客户端应继续发送请求正文</td>
+      </tr>
+      <tr>
+          <td>101</td>
+          <td>Switching Protocols</td>
+          <td>切换协议</td>
+          <td>服务器同意切换协议（如升级到 WebSocket）</td>
+      </tr>
+      <tr>
+          <td>102</td>
+          <td>Processing</td>
+          <td>正在处理</td>
+          <td>WebDAV 专用，防止超时</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="2xx---成功响应">2xx - 成功响应</h4>
+<table>
+  <thead>
+      <tr>
+          <th>状态码</th>
+          <th>英文名称</th>
+          <th>中文说明</th>
+          <th>常见用途说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>200</td>
+          <td>OK</td>
+          <td>请求成功</td>
+          <td>最常见，GET/POST 正常返回数据</td>
+      </tr>
+      <tr>
+          <td>201</td>
+          <td>Created</td>
+          <td>已创建</td>
+          <td>POST/PUT 创建资源成功</td>
+      </tr>
+      <tr>
+          <td>202</td>
+          <td>Accepted</td>
+          <td>已接受</td>
+          <td>请求已接受但尚未处理（如异步任务）</td>
+      </tr>
+      <tr>
+          <td>204</td>
+          <td>No Content</td>
+          <td>无内容</td>
+          <td>请求成功，但无返回主体（常用于 DELETE）</td>
+      </tr>
+      <tr>
+          <td>206</td>
+          <td>Partial Content</td>
+          <td>部分内容</td>
+          <td>Range 请求，返回部分资源</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="3xx---重定向">3xx - 重定向</h4>
+<table>
+  <thead>
+      <tr>
+          <th>状态码</th>
+          <th>英文名称</th>
+          <th>中文说明</th>
+          <th>常见用途说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>301</td>
+          <td>Moved Permanently</td>
+          <td>永久移动</td>
+          <td>资源永久迁移，SEO 友好（权重传递）</td>
+      </tr>
+      <tr>
+          <td>302</td>
+          <td>Found (临时重定向)</td>
+          <td>临时重定向</td>
+          <td>临时跳转，浏览器会跟随但不改书签</td>
+      </tr>
+      <tr>
+          <td>303</td>
+          <td>See Other</td>
+          <td>参见其他</td>
+          <td>POST 后重定向到 GET（防止重复提交）</td>
+      </tr>
+      <tr>
+          <td>304</td>
+          <td>Not Modified</td>
+          <td>未修改</td>
+          <td>缓存有效，客户端可使用本地缓存</td>
+      </tr>
+      <tr>
+          <td>307</td>
+          <td>Temporary Redirect</td>
+          <td>临时重定向（严格）</td>
+          <td>与 302 类似，但方法不改变</td>
+      </tr>
+      <tr>
+          <td>308</td>
+          <td>Permanent Redirect</td>
+          <td>永久重定向（严格）</td>
+          <td>与 301 类似，但方法不改变</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="4xx---客户端错误">4xx - 客户端错误</h4>
+<table>
+  <thead>
+      <tr>
+          <th>状态码</th>
+          <th>英文名称</th>
+          <th>中文说明</th>
+          <th>常见用途说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>请求错误</td>
+          <td>参数格式错误、语法错误</td>
+      </tr>
+      <tr>
+          <td>401</td>
+          <td>Unauthorized</td>
+          <td>未授权</td>
+          <td>需要身份验证（登录）</td>
+      </tr>
+      <tr>
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>禁止访问</td>
+          <td>权限不足，无权访问该资源</td>
+      </tr>
+      <tr>
+          <td>404</td>
+          <td>Not Found</td>
+          <td>未找到</td>
+          <td>资源不存在（最常见错误页）</td>
+      </tr>
+      <tr>
+          <td>405</td>
+          <td>Method Not Allowed</td>
+          <td>方法不允许</td>
+          <td>如用 GET 访问只支持 POST 的接口</td>
+      </tr>
+      <tr>
+          <td>429</td>
+          <td>Too Many Requests</td>
+          <td>请求过多</td>
+          <td>触发限流/频率限制</td>
+      </tr>
+      <tr>
+          <td>451</td>
+          <td>Unavailable For Legal Reasons</td>
+          <td>因法律原因不可用</td>
+          <td>内容因法律要求被屏蔽</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="5xx---服务器错误">5xx - 服务器错误</h4>
+<table>
+  <thead>
+      <tr>
+          <th>状态码</th>
+          <th>英文名称</th>
+          <th>中文说明</th>
+          <th>常见用途说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>500</td>
+          <td>Internal Server Error</td>
+          <td>服务器内部错误</td>
+          <td>最常见的服务器崩溃/代码异常</td>
+      </tr>
+      <tr>
+          <td>502</td>
+          <td>Bad Gateway</td>
+          <td>网关错误</td>
+          <td>上游服务器（反向代理后端）无效响应</td>
+      </tr>
+      <tr>
+          <td>503</td>
+          <td>Service Unavailable</td>
+          <td>服务不可用</td>
+          <td>服务器超载、维护中、过载保护</td>
+      </tr>
+      <tr>
+          <td>504</td>
+          <td>Gateway Timeout</td>
+          <td>网关超时</td>
+          <td>上游服务器响应超时</td>
+      </tr>
+  </tbody>
+</table>
+<p>这些是日常开发、运维、SEO、调试中最常遇到的状态码，已覆盖 95% 以上的实际使用场景。如果需要更完整的列表（包括 WebDAV、HTTP/2 扩展等非常用码），可以参考 MDN 或 IANA 官方注册表。</p>
+<p>希望这个表格对你有帮助！</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-02-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/computer/http-response-status-code/" data-title="HTTP状态码"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/computer/http-response-status-code/" data-title="HTTP状态码"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/computer/http-response-status-code/"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/computer/http-response-status-code/" data-title="HTTP状态码"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/computer/http-response-status-code/" data-title="HTTP状态码"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/computer/http-response-status-code/" data-title="HTTP状态码"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/computer/http-response-status-code/" data-title="HTTP状态码" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fcomputer%2fhttp-response-status-code%2f&amp;text=HTTP%e7%8a%b6%e6%80%81%e7%a0%81" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/computer/nginx-conf/" class="prev" rel="prev" title="Nginx安全配置"><i class="fas fa-angle-left" aria-hidden="true"></i>Nginx安全配置</a>
+            <a href="/posts/computer/fix-uefi-boot/" class="next" rel="next" title="蓝屏0xc000000e修复">蓝屏0xc000000e修复<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

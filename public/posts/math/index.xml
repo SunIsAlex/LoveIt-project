@@ -1,0 +1,313 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Math - My New Hugo Site</title>
+        <link>http://localhost:1313/posts/math/</link>
+        <description>All Math | My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 03 Apr 2026 20:48:40 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/math/" rel="self" type="application/rss+xml" /><item>
+    <title>变态难の对数Pade逼近</title>
+    <link>http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/</link>
+    <pubDate>Fri, 03 Apr 2026 20:48:40 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/2024-fujian-xiamen-sanmo-derivative/</guid>
+    <description><![CDATA[本文围绕对数函数 $\ln x$ 与 $\ln(1+x)$ 的 <strong>Padé 逼近与不等式放缩</strong> 展开，系统总结了一类高考常见的估值与比较技巧。]]></description>
+</item>
+<item>
+    <title>26年3月27日课堂复盘</title>
+    <link>http://localhost:1313/posts/math/2026-3-27-lwy-review/</link>
+    <pubDate>Fri, 27 Mar 2026 22:17:31 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/2026-3-27-lwy-review/</guid>
+    <description><![CDATA[<h1 id="两个重要数列">两个重要数列</h1>
+<p>$n\in N^*$,有以下两个数列:</p>
+<ul>
+<li>$a_n=(1+\frac{1}{n})^n$</li>
+<li>$b_n=(1+\frac{1}{n})^{n+1}$</li>
+</ul>
+<p>我们有以下两个结论:</p>
+<ol>
+<li>$a_n\lt e\lt b_n$</li>
+<li>${a_n}$为<strong>递增</strong>数列,${b_n}$为<strong>递减</strong>数列</li>
+<li>${a_n},{b_n}$<strong>收敛</strong>,$\lim_{n \to \infty} a_n=\lim_{n \to \infty} b_n=e$</li>
+</ol>
+<p>我们可以观看<strong>优美的desmos图像</strong>感受性质.
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536417985792" 
+     data-desmos-id="calc-1775514536417985792"
+     data-funcs="a_{n}=\left(1&#43;\frac{1}{n}\right)^{n}\left\{n\ge1\right\}|b_{n}=\left(1&#43;\frac{1}{n}\right)^{n&#43;1}\left\{n\ge1\right\}|y=e\left\{n\ge1\right\}"
+     data-xmin="0"
+     data-xmax="10"
+     data-ymin="0"
+     data-ymax="4"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>
+<p>下面进行证明:</p>
+<p>先证(1),其等价于:</p>
+<p>$$
+\begin{gather}
+n\ln (1+\frac{1}{n})\lt 1 \lt (n+1)\ln (1+\frac{1}{n})\
+\frac{1}{n+1}\lt\ln (1+\frac{1}{n})\lt \frac{1}{n} \
+这其实就是对数不等式链的核心:\
+x^2-x\ge xlnx\\ge x-1\ge lnx\ge 1-\cfrac{1}{x}\\ge \cfrac{lnx}{x}(x=0,x\gt 0)
+\end{gather}
+$$</p>
+<p>对于(2),其证明有两大类流派:</p>
+<h2 id="构造函数导就完了">构造函数(<del>导就完了</del>)</h2>
+<p>取对数可以化简复杂指数,所以:</p>
+<p>${a_n}$为<strong>递增</strong>数列,等价于:</p>
+<p>$$
+\begin{gather}
+n\ln (1+\frac{1}{n})\lt (n+1)\ln (1+\frac{1}{n+1})\
+\frac{\ln (1+\frac{1}{n})}{\frac{1}{n}}\lt \frac{\ln (1+\frac{1}{n+1})}{\frac{1}{n+1}}\
+[一解]\
+构造函数:f(x)=\frac{\ln(x+1)}{x}(0\lt x\le 1)\
+f&rsquo;(x)=\frac{\frac{x}{x+1}-ln(x+1)}{x^2}\
+注意到:\ln (x+1)\gt \frac{x}{x+1}(x\gt 0),有:\
+f&rsquo;(x)\lt 0,f(x)单调递减,又:\
+\frac{1}{n}\gt \frac{1}{n+1}\
+证明完毕.\
+[另解]\
+构造函数g(x)=x[\ln(x+1)-\ln x](x\ge 1)\
+g&rsquo;(x)=\ln \frac{x+1}{x}+\frac{x}{x+1}-1\\gt 1-\frac{x}{x+1}+\frac{x}{x+1}-1=0\
+于是g(x)单调递增,Q.E.D.
+\end{gather}
+$$</p>]]></description>
+</item>
+<item>
+    <title>浅谈函数的凹凸性</title>
+    <link>http://localhost:1313/posts/math/concavity-and-convexity-of-functions/</link>
+    <pubDate>Mon, 09 Mar 2026 20:51:00 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/concavity-and-convexity-of-functions/</guid>
+    <description><![CDATA[<h1 id="函数的凹凸性-convexity-and-concavity">函数的凹凸性 (Convexity and Concavity)</h1>
+<h1 id="前言同一事物三种视角">前言：同一事物，三种视角</h1>
+<p>什么是函数的<strong>凹凸性</strong>？当我们面对这个问题时，得到的答案往往取决于提问的语境。这有点像费曼在《费曼物理学讲义》中所说的：</p>
+<blockquote>
+<p>科学是对同一事物不同角度的认识。</p>
+</blockquote>
+<p>一个函数是“凸”还是“凹”，在微积分、几何分析和优化理论中，分别呈现出三种看似不同、实则等价的面貌。</p>
+<h2 id="1-基于二阶导数的定义">1. 基于二阶导数的定义</h2>
+<p>第一种视角来自微分——我们用<strong>二阶导数的正负</strong>来判断：$f&rsquo;&rsquo;(x) \ge 0$ 还是 $f&rsquo;&rsquo;(x) \le 0$？这是最直接的计算标准，也是初学者的首选。</p>
+<p>设函数 $f$ 在区间 $I$ 上二阶可导：</p>
+<ul>
+<li>
+<p><strong>凹函数 (Concave / 俗称上凸 $\cap$)</strong> 如果 $f&rsquo;&rsquo;(x) \le 0, \forall x \in I$，则称 $f$ 为<strong>凹函数</strong>。
+其图形向上隆起，开口向下。</p>
+</li>
+<li>
+<p><strong>凸函数 (Convex / 俗称下凸 $\cup$)</strong> 如果 $f&rsquo;&rsquo;(x) \ge 0, \forall x \in I$，则称 $f$ 为<strong>凸函数</strong>。
+其图形向下坠，开口向上。</p>
+</li>
+</ul>
+<blockquote>
+<p>CZW:用眼睛从函数下方看，开口向下就是凹函数，向上就是凸函数</p>
+</blockquote>
+<hr>
+<h2 id="2-基于切线位置的几何定义">2. 基于切线位置的几何定义</h2>
+<p>第二种视角来自<strong>几何</strong>——我们观察<strong>曲线相对于其切线的位置</strong>。曲线是始终“趴”在切线上方，还是永远“躺”在切线下方？这个视角揭示了凹凸性的局部本质：切线是曲线在该点的“线性近似”，而凹凸性则描述了这种近似的误差方向是单向的。</p>
+<div class="notice info" >
+    <p class="notice-title">
+        <span class="icon-notice baseline">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="92 59.5 300 300">
+  <path d="M292 303.25V272c0-3.516-2.734-6.25-6.25-6.25H267v-100c0-3.516-2.734-6.25-6.25-6.25h-62.5c-3.516 0-6.25 2.734-6.25 6.25V197c0 3.516 2.734 6.25 6.25 6.25H217v62.5h-18.75c-3.516 0-6.25 2.734-6.25 6.25v31.25c0 3.516 2.734 6.25 6.25 6.25h87.5c3.516 0 6.25-2.734 6.25-6.25Zm-25-175V97c0-3.516-2.734-6.25-6.25-6.25h-37.5c-3.516 0-6.25 2.734-6.25 6.25v31.25c0 3.516 2.734 6.25 6.25 6.25h37.5c3.516 0 6.25-2.734 6.25-6.25Zm125 81.25c0 82.813-67.188 150-150 150-82.813 0-150-67.188-150-150 0-82.813 67.188-150 150-150 82.813 0 150 67.188 150 150Z"/>
+</svg>
+
+        </span> Info </p>]]></description>
+</item>
+<item>
+    <title>约束条件最值一百题001</title>
+    <link>http://localhost:1313/posts/math/constrained-extremum-problem001/</link>
+    <pubDate>Fri, 06 Mar 2026 21:56:50 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/constrained-extremum-problem001/</guid>
+    <description><![CDATA[<h2 id="题目">题目</h2>
+<p>已知 $x, y \ge 0$，且满足方程 $x + 4y = x^2 y^3$，求 $(\frac{8}{x} + \frac{1}{y})_{\min}$ 的值。</p>
+<hr>
+<h2 id="解答过程人类阵营">解答过程(人类阵营)</h2>
+<h3 id="消元单变量基本不等式">消元+单变量基本不等式</h3>
+<ol>
+<li>
+<p><strong>将原方程变形为关于 $x$ 的一元二次方程：</strong>
+$$y^3 x^2 - x - 4y = 0$$</p>
+</li>
+<li>
+<p><strong>利用求根公式解出 $x$（取正根）：</strong>
+$$x = \frac{1 + \sqrt{1 + 16y^4}}{2y^3}$$</p>
+</li>
+<li>
+<p><strong>代入待求式 $\frac{8}{x} + \frac{1}{y}$：</strong>
+$$
+\begin{aligned}
+\frac{8}{x} + \frac{1}{y} &amp;= \frac{16y^3}{1 + \sqrt{1 + 16y^4}} + \frac{1}{y} \
+&amp;= \frac{16y^3 (\sqrt{1 + 16y^4} - 1)}{16y^4} + \frac{1}{y} \
+&amp;= \frac{\sqrt{1 + 16y^4} - 1}{y} + \frac{1}{y} \
+&amp;= \frac{\sqrt{1 + 16y^4}}{y} \
+&amp;= \sqrt{\frac{1}{y^2} + 16y^2}
+\end{aligned}
+$$</p>]]></description>
+</item>
+<item>
+    <title>自然对数的估值方法</title>
+    <link>http://localhost:1313/posts/math/lnx-approximation/</link>
+    <pubDate>Thu, 05 Mar 2026 20:54:13 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/lnx-approximation/</guid>
+    <description><![CDATA[<h1 id="泰勒展开">泰勒展开</h1>
+<p>( \ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots + (-1)^{n-1} \frac{x^n}{n} + o(x^n) )
+需要注意的是,此公式具有收敛半径$R=1$,仅适用于$x\approx 0$的情况.</p>
+<p>具体内容,可以见<a href="https://www.sunisalex.org/posts/math/taylor-expansion/" target="_blank" rel="noopener noreffer ">浅谈泰勒展开与高考数学</a>.</p>
+<h1 id="帕德逼近">帕德逼近(※)</h1>
+<p>以下是<a href="https://zh.wikipedia.org/zh-sg/%E5%B8%95%E5%BE%B7%E8%BF%91%E4%BC%BC" target="_blank" rel="noopener noreffer ">维基百科</a>给出的简介,这里不加赘述.
+</p>
+<p>总之,一般在<strong>主对角线</strong>[n,n]上(或附近)的<strong>帕德逼近</strong>比较精确.
+[1, 1] 阶:$$\ln(1+x) \approx \frac{x + \frac{1}{2}x^2}{1 + x} \quad \text{或者更常用的形式：} \quad \frac{2x}{x+2}$$(注：$\frac{2x}{x+2}$ 实际上是 $\ln(\frac{1+y}{1-y})$ 的变形，在 $x$ 较小时非常准)</p>
+<p>[3,2] 阶:$$\ln x \approx \frac{6(x-1)(x+1)}{3(x+1)^2 - (x-1)^2} = \frac{3(x^2-1)}{x^2+4x+1}$$</p>
+<p>
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487657458" 
+     data-desmos-id="calc-1775514536487657458"
+     data-funcs="y=\ln(1&#43;x)|y=\frac{2x}{x&#43;2}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+
+
+<div class="desmos-container" 
+     id="desmos-calc-1775514536487701208" 
+     data-desmos-id="calc-1775514536487701208"
+     data-funcs="y=\ln(x)|y=\frac{3(x^{2}-1)}{x^{2}&#43;4x&#43;1}"
+     data-xmin="-10"
+     data-xmax="10"
+     data-ymin="-10"
+     data-ymax="10"
+     style="width:100%; height:500px; border:2px solid #ccc;">
+</div>
+</p>]]></description>
+</item>
+<item>
+    <title>浅谈泰勒展开与高考数学</title>
+    <link>http://localhost:1313/posts/math/taylor-expansion/</link>
+    <pubDate>Mon, 23 Feb 2026 17:10:57 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/taylor-expansion/</guid>
+    <description><![CDATA[<h1 id="泰勒公式">泰勒公式</h1>
+<h2 id="高数知识">高数知识</h2>
+<p>泰勒 (Taylor) 公式的主要作用是用多项式逼近函数和近似计算，对应的分别是带有皮亚诺余项的泰勒公式和带有拉格朗日余项的泰勒公式。</p>
+<h3 id="1-带有皮亚诺余项的泰勒公式">1. 带有皮亚诺余项的泰勒公式</h3>
+<p>若函数 ( f(x) ) 在点 ( x_0 ) 处存在直至 ( n ) 阶导数，则有
+$$f(x) = f(x_0) + f&rsquo;(x_0)(x - x_0) + \frac{f&rsquo;&rsquo;(x_0)}{2!}(x - x_0)^2 + \cdots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + o((x - x_0)^n).$$</p>
+<p>用得较多的是泰勒公式在 ( x_0 = 0 ) 时的特殊形式：
+$$f(x) = f(0) + f&rsquo;(0)x + \frac{f&rsquo;&rsquo;(0)}{2!}x^2 + \cdots + \frac{f^{(n)}(0)}{n!}x^n + o(x^n).$$</p>
+<p>它也称为 (带有皮亚诺余项的) 麦克劳林 (Maclaurin) 公式。</p>
+<h3 id="2-带有拉格朗日余项的泰勒公式">2. 带有拉格朗日余项的泰勒公式</h3>
+<p>若函数 ( f(x) ) 在 ([a, b]) 上存在直至 ( n ) 阶的连续导函数，在 ((a, b)) 内存在 ( n+1 ) 阶导函数，则对任意给定的 ( x, x_0 \in [a, b] )，至少存在一点 (\xi \in (a, b))，使得
+$$f(x) = f(x_0) + f&rsquo;(x_0)(x - x_0) + \frac{f&rsquo;&rsquo;(x_0)}{2!}(x - x_0)^2 + \cdots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - x_0)^{n+1}.$$</p>]]></description>
+</item>
+<item>
+    <title>每日艺题 DAY002</title>
+    <link>http://localhost:1313/posts/math/meiri-yiti-day002/</link>
+    <pubDate>Thu, 12 Feb 2026 16:54:26 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/meiri-yiti-day002/</guid>
+    <description><![CDATA[<h1 id="a_ns_n联袂数列有通项">(a_n)(S_n)联袂数列(有通项)</h1>
+<p>$$
+\begin{gather}
+a_nS_n=\cfrac{1}{4^n},a_1&gt;0,求a_n.
+\end{gather}
+$$</p>
+<h2 id="attempt1">Attempt1:</h2>
+<p>$$
+\begin{gather}
+消去S_n:S_n=\cfrac{1}{a_n4^n}\
+S_{n+1}=\cfrac{1}{a_{n+1}4^{n+1}}\
+a_{n+1}=\cfrac{1}{4^{n+1}}({\cfrac{1}{a_{n+1}}-\cfrac{4}{a_n}})\
+=\cfrac{1}{4^{n+1}}({\cfrac{a_{n}-4a_{n+1}}{a_na_{n+1}}})
+\end{gather}
+$$</p>
+<p>这样的形式还是太复杂了,遂放弃.</p>
+<h2 id="attempt2">Attempt2:</h2>
+<p>$$
+\begin{gather}
+消a_n:(S_{n}-S_{n-1})S_n=\cfrac{1}{4^n}\
+可以把\cfrac{1}{4^n}“雨露均沾”分给两个因式\
+令b_n=2^nS_n,有:\
+(b_{n}-2b_{n-1})b_n=1\
+即:{b_n}^2-2b_{n-1}b_n=1\
+从b_{n-1}到b_n比较困难,需要用求根公式,\
+何不反其道而行之?\
+b_{n-1}=\cfrac{{b_n}^2-1}{2b_n}\
+我们惊喜的发现,\式子的形式类似于正切二倍角公式:\
+遂令c_n=\cfrac{1}{b_n}=tan(θ_n)&gt;0(θ_n&gt;0),\
+tan(θ_{n-1})=c_{n-1}=\cfrac{2b_n}{{b_n}^2-1}\=\cfrac{2c_n}{1-{c_n}^2}=tan(2θ_n)\
+于是θ_n=\cfrac{θ_{n-1}}{2},我们便构建了从n-1到n的递推.\
+S_1=a_1=\cfrac{1}{2},b_1=1,c_1=1=tan(θ_1).\
+则θ_1=\cfrac{π}{4},θ_n=\cfrac{π}{2^{n+1}}.
+S_n=\cfrac{b_n}{2^n}=\cfrac{1}{2^nc_n}\=\cfrac{1}{2^ntan(\cfrac{π}{2^{n+1}})},\
+a_n=S_n-S_{n-1}\=\cfrac{1}{2^ntan(\cfrac{π}{2^{n+1}})}-\cfrac{1}{2^{n-1}tan(\cfrac{π}{2^{n}})}(n\ge 2)\
+把tan写成cot就不会有定义域的问题:\a_n=\cfrac{cot(\cfrac{π}{2^{n+1}})}{2^n}-\cfrac{cot(\cfrac{π}{2^{n}})}{2^{n-1}}(n\ge 1)
+\end{gather}
+$$
+通项还可以继续化简:
+$$
+\begin{gather}
+∵cot(x)-2cot(2x)=tan(x)\
+∴a_n=\cfrac{tan(\cfrac{π}{2^{n+1}})}{2^n}(n\ge 1)
+\end{gather}
+$$</p>]]></description>
+</item>
+<item>
+    <title>每日艺题 DAY001</title>
+    <link>http://localhost:1313/posts/math/meiri-yiti-day001/</link>
+    <pubDate>Tue, 10 Feb 2026 17:31:25 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/math/meiri-yiti-day001/</guid>
+    <description><![CDATA[<h1 id="s_na_n联袂数列无通项">(S_{n},a_{n})联袂数列(无通项)</h1>
+<p><strong>题目：</strong></p>
+<blockquote>
+<p>已知 ({a_n}) 是各项均为正数的无穷数列,其前 (n) 项和为 (S_n),且<br>
+[
+a_n + S_n = a_n S_n \quad (n \in \mathbb{N}^<em>)
+]<br>
+给出下列四个结论：
+① (a_2 = \sqrt{2})；<br>
+② 存在一个正数 (m_0),使得对任意的 (n \in \mathbb{N}^</em>),都有 (S_n &lt; m_0)；<br>
+③ 数列 ({a_n}) 单调递减；<br>
+④ 对任意的 (n \in \mathbb{N}^*),(n \geq 2),都有 (a_{n-1} + a_{n+1} &gt; 2a_n)。<br>
+其中所有正确结论的序号是___。
+(SRC:北京101中2025-2026第一学期高三数学统练二)</p>
+</blockquote>
+<p>先算几项,寻找规律：</p>
+<table>
+  <thead>
+      <tr>
+          <th>n</th>
+          <th>(a_{n})</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>(\sqrt{2})</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>(\cfrac{-\sqrt{2}+\sqrt{10+4\sqrt{2}}}{2} )</td>
+      </tr>
+  </tbody>
+</table>
+<p>根据计算,<strong>①正确</strong>.</p>
+<p>到第三项,数列已经开始<del>崩坏</del>不好算了.</p>
+<p>可以预见的是,通项应该是没戏的.</p>
+<p>不过大概可以看出,(a_{3}\lt \cfrac{-\sqrt{2}+\sqrt{18}}{2}=\sqrt{2}=a_{2}\lt a_{1} ),数列({a_{n}})是递减数列.</p>
+<p>这也比较符合直觉,(a_{n}=\cfrac{S_{n}}{S_{n}-1}=1+\cfrac{1}{S_{n}-1}),而(a_{n}\gt 0,S_{n})单调递增,那么(a_{n})必然单调递减,并且始终大于1.</p>]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>浅谈函数的凹凸性 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="浅谈函数的凹凸性">
+  <meta property="og:description" content="函数的凹凸性 (Convexity and Concavity) 前言：同一事物，三种视角 什么是函数的凹凸性？当我们面对这个问题时，得到的答案往往取决于提问的语境。这有点像费曼在《费曼物理学讲义》中所说的：
+科学是对同一事物不同角度的认识。
+一个函数是“凸”还是“凹”，在微积分、几何分析和优化理论中，分别呈现出三种看似不同、实则等价的面貌。
+1. 基于二阶导数的定义 第一种视角来自微分——我们用二阶导数的正负来判断：$f’’(x) \ge 0$ 还是 $f’’(x) \le 0$？这是最直接的计算标准，也是初学者的首选。
+设函数 $f$ 在区间 $I$ 上二阶可导：
+凹函数 (Concave / 俗称上凸 $\cap$) 如果 $f’’(x) \le 0, \forall x \in I$，则称 $f$ 为凹函数。 其图形向上隆起，开口向下。
+凸函数 (Convex / 俗称下凸 $\cup$) 如果 $f’’(x) \ge 0, \forall x \in I$，则称 $f$ 为凸函数。 其图形向下坠，开口向上。
+CZW:用眼睛从函数下方看，开口向下就是凹函数，向上就是凸函数
+2. 基于切线位置的几何定义 第二种视角来自几何——我们观察曲线相对于其切线的位置。曲线是始终“趴”在切线上方，还是永远“躺”在切线下方？这个视角揭示了凹凸性的局部本质：切线是曲线在该点的“线性近似”，而凹凸性则描述了这种近似的误差方向是单向的。
+Info">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-09T20:51:00+08:00">
+    <meta property="article:modified_time" content="2026-03-09T20:51:00+08:00">
+    <meta property="article:tag" content="导数">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="浅谈函数的凹凸性">
+  <meta name="twitter:description" content="函数的凹凸性 (Convexity and Concavity) 前言：同一事物，三种视角 什么是函数的凹凸性？当我们面对这个问题时，得到的答案往往取决于提问的语境。这有点像费曼在《费曼物理学讲义》中所说的：
+科学是对同一事物不同角度的认识。
+一个函数是“凸”还是“凹”，在微积分、几何分析和优化理论中，分别呈现出三种看似不同、实则等价的面貌。
+1. 基于二阶导数的定义 第一种视角来自微分——我们用二阶导数的正负来判断：$f’’(x) \ge 0$ 还是 $f’’(x) \le 0$？这是最直接的计算标准，也是初学者的首选。
+设函数 $f$ 在区间 $I$ 上二阶可导：
+凹函数 (Concave / 俗称上凸 $\cap$) 如果 $f’’(x) \le 0, \forall x \in I$，则称 $f$ 为凹函数。 其图形向上隆起，开口向下。
+凸函数 (Convex / 俗称下凸 $\cup$) 如果 $f’’(x) \ge 0, \forall x \in I$，则称 $f$ 为凸函数。 其图形向下坠，开口向上。
+CZW:用眼睛从函数下方看，开口向下就是凹函数，向上就是凸函数
+2. 基于切线位置的几何定义 第二种视角来自几何——我们观察曲线相对于其切线的位置。曲线是始终“趴”在切线上方，还是永远“躺”在切线下方？这个视角揭示了凹凸性的局部本质：切线是曲线在该点的“线性近似”，而凹凸性则描述了这种近似的误差方向是单向的。
+Info">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" /><link rel="prev" href="http://localhost:1313/posts/math/constrained-extremum-problem001/" /><link rel="next" href="http://localhost:1313/posts/math/2026-3-27-lwy-review/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "浅谈函数的凹凸性",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/math\/concavity-and-convexity-of-functions\/"
+        },"genre": "posts","keywords": "导数","wordcount":  1618 ,
+        "url": "http:\/\/localhost:1313\/posts\/math\/concavity-and-convexity-of-functions\/","datePublished": "2026-03-09T20:51:00+08:00","dateModified": "2026-03-09T20:51:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">浅谈函数的凹凸性</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%AB%98%E8%81%94%E4%B8%80%E8%AF%95/"><i class="far fa-folder" aria-hidden="true"></i>高联一试</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-09">2026-03-09</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1618 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-基于二阶导数的定义">1. 基于二阶导数的定义</a></li>
+    <li><a href="#2-基于切线位置的几何定义">2. 基于切线位置的几何定义</a></li>
+    <li><a href="#3-基于琴生不等式-割线定义">3. 基于琴生不等式 (割线定义)</a></li>
+    <li><a href="#4-总结对比表">4. 总结对比表</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-构造辅助函数">1. 构造辅助函数</a></li>
+        <li><a href="#2-求导分析">2. 求导分析</a></li>
+        <li><a href="#3-分情况讨论单调性">3. 分情况讨论单调性</a></li>
+        <li><a href="#4-最终结论">4. 最终结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#利用-n2-结论证明-n-元琴生不等式">利用 $n=2$ 结论证明 $n$ 元琴生不等式</a>
+      <ul>
+        <li><a href="#1-前提结论已证">1. 前提结论（已证）</a></li>
+        <li><a href="#2-核心思想整体代换法">2. 核心思想：整体代换法</a></li>
+        <li><a href="#3-推导步骤">3. 推导步骤</a></li>
+        <li><a href="#4-结论">4. 结论</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#小试牛刀">小试牛刀</a></li>
+        <li><a href="#渐入佳境">渐入佳境</a></li>
+        <li><a href="#证法一教科书解析版">证法一：教科书解析版</a></li>
+        <li><a href="#证法二导数推导版利用导数验证凸性">证法二：导数推导版（利用导数验证凸性）</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#评价">评价</a></li>
+    <li><a href="#建议结语">建议结语</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="函数的凹凸性-convexity-and-concavity">函数的凹凸性 (Convexity and Concavity)</h1>
+<h1 id="前言同一事物三种视角">前言：同一事物，三种视角</h1>
+<p>什么是函数的<strong>凹凸性</strong>？当我们面对这个问题时，得到的答案往往取决于提问的语境。这有点像费曼在《费曼物理学讲义》中所说的：</p>
+<blockquote>
+<p>科学是对同一事物不同角度的认识。</p>
+</blockquote>
+<p>一个函数是“凸”还是“凹”，在微积分、几何分析和优化理论中，分别呈现出三种看似不同、实则等价的面貌。</p>
+<h2 id="1-基于二阶导数的定义">1. 基于二阶导数的定义</h2>
+<p>第一种视角来自微分——我们用<strong>二阶导数的正负</strong>来判断：$f&rsquo;&rsquo;(x) \ge 0$ 还是 $f&rsquo;&rsquo;(x) \le 0$？这是最直接的计算标准，也是初学者的首选。</p>
+<p>设函数 $f$ 在区间 $I$ 上二阶可导：</p>
+<ul>
+<li>
+<p><strong>凹函数 (Concave / 俗称上凸 $\cap$)</strong> 如果 $f&rsquo;&rsquo;(x) \le 0, \forall x \in I$，则称 $f$ 为<strong>凹函数</strong>。
+其图形向上隆起，开口向下。</p>
+</li>
+<li>
+<p><strong>凸函数 (Convex / 俗称下凸 $\cup$)</strong> 如果 $f&rsquo;&rsquo;(x) \ge 0, \forall x \in I$，则称 $f$ 为<strong>凸函数</strong>。
+其图形向下坠，开口向上。</p>
+</li>
+</ul>
+<blockquote>
+<p>CZW:用眼睛从函数下方看，开口向下就是凹函数，向上就是凸函数</p>
+</blockquote>
+<hr>
+<h2 id="2-基于切线位置的几何定义">2. 基于切线位置的几何定义</h2>
+<p>第二种视角来自<strong>几何</strong>——我们观察<strong>曲线相对于其切线的位置</strong>。曲线是始终“趴”在切线上方，还是永远“躺”在切线下方？这个视角揭示了凹凸性的局部本质：切线是曲线在该点的“线性近似”，而凹凸性则描述了这种近似的误差方向是单向的。</p>
+<style type="text/css">
+     
+    .notice {
+        --title-color: #fff;
+        --title-background-color: #6be;
+        --content-color: #444;
+        --content-background-color: #e7f2fa;
+    }
+
+    .notice.info {
+        --title-background-color: #fb7;
+        --content-background-color: #fec;
+    }
+
+    .notice.tip {
+        --title-background-color: #5a5;
+        --content-background-color: #efe;
+    }
+
+    .notice.warning {
+        --title-background-color: #c33;
+        --content-background-color: #fee;
+    }
+
+     
+    [data-theme="dark"] {
+        .notice {
+            --title-color: #fff;
+            --title-background-color: #069;
+            --content-color: #ddd;
+            --content-background-color: #023;
+        }
+
+        .notice.info {
+            --title-background-color: #a50;
+            --content-background-color: #420;
+        }
+
+        .notice.tip {
+            --title-background-color: #363;
+            --content-background-color: #121;
+        }
+
+        .notice.warning {
+            --title-background-color: #800;
+            --content-background-color: #400;
+        }
+    }
+
+     
+    .notice {
+        padding: 18px;
+        line-height: 24px;
+        margin-bottom: 24px;
+        border-radius: 4px;
+        color: var(--content-color);
+        background: var(--content-background-color);
+    }
+
+    .notice p:last-child {
+        margin-bottom: 0
+    }
+
+     
+    .notice-title {
+        margin: -18px -18px 12px;
+        padding: 4px 18px;
+        border-radius: 4px 4px 0 0;
+        font-weight: 700;
+        color: var(--title-color);
+        background: var(--title-background-color);
+    }
+
+     
+    .icon-notice {
+        display: inline-flex;
+        align-self: center;
+        margin-right: 8px;
+    }
+
+    .icon-notice img,
+    .icon-notice svg {
+        height: 1em;
+        width: 1em;
+        fill: currentColor;
+    }
+
+    .icon-notice img,
+    .icon-notice.baseline svg {
+        top: .125em;
+        position: relative;
+    }
+</style><div class="notice info" >
+    <p class="notice-title">
+        <span class="icon-notice baseline">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="92 59.5 300 300">
+  <path d="M292 303.25V272c0-3.516-2.734-6.25-6.25-6.25H267v-100c0-3.516-2.734-6.25-6.25-6.25h-62.5c-3.516 0-6.25 2.734-6.25 6.25V197c0 3.516 2.734 6.25 6.25 6.25H217v62.5h-18.75c-3.516 0-6.25 2.734-6.25 6.25v31.25c0 3.516 2.734 6.25 6.25 6.25h87.5c3.516 0 6.25-2.734 6.25-6.25Zm-25-175V97c0-3.516-2.734-6.25-6.25-6.25h-37.5c-3.516 0-6.25 2.734-6.25 6.25v31.25c0 3.516 2.734 6.25 6.25 6.25h37.5c3.516 0 6.25-2.734 6.25-6.25Zm125 81.25c0 82.813-67.188 150-150 150-82.813 0-150-67.188-150-150 0-82.813 67.188-150 150-150 82.813 0 150 67.188 150 150Z"/>
+</svg>
+
+        </span> Info </p><p>用切线不等式，可以在<strong>凹凸性改变</strong>的函数上使用广义琴生不等式</p></div>
+
+<ul>
+<li>
+<p><strong>凹函数 (Concave $\cap$):</strong> 曲线始终位于其任意点切线的<strong>下方</strong>。
+即：<strong>切线在曲线上方</strong>。
+数学表示：$f(x) \le f(x_0) + f&rsquo;(x_0)(x - x_0)$</p>
+</li>
+<li>
+<p><strong>凸函数 (Convex $\cup$):</strong> 曲线始终位于其任意点切线的<strong>上方</strong>。
+即：<strong>切线在曲线下方</strong>。
+数学表示：$f(x) \ge f(x_0) + f&rsquo;(x_0)(x - x_0)$</p>
+</li>
+</ul>
+<hr>
+<h2 id="3-基于琴生不等式-割线定义">3. 基于琴生不等式 (割线定义)</h2>
+<p>第三种视角来自代数——我们用<strong>琴生不等式</strong>（Jensen&rsquo;s inequality）来刻画：函数值在加权平均处的表现，与加权平均的函数值之间是什么关系？这是最抽象的视角，却也是最具力量的——它跨越了微积分，将凹凸性推广到概率论、信息论和优化理论的广阔天地。</p>
+<ul>
+<li>
+<p><strong>凹函数 (Concave $\cap$):</strong> $$f(\lambda x_1 + (1-\lambda)x_2) \ge \lambda f(x_1) + (1-\lambda)f(x_2)$$
+连接曲线上两点的割线在<strong>曲线下方</strong>。</p>
+</li>
+<li>
+<p><strong>凸函数 (Convex $\cup$):</strong> $$f(\lambda x_1 + (1-\lambda)x_2) \le \lambda f(x_1) + (1-\lambda)f(x_2)$$
+连接曲线上两点的割线在<strong>曲线上方</strong>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="4-总结对比表">4. 总结对比表</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">术语 (国际标准)</th>
+          <th style="text-align: center">形状</th>
+          <th style="text-align: left">二阶导</th>
+          <th style="text-align: left">切线位置</th>
+          <th style="text-align: left">割线位置</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Concave (凹)</strong></td>
+          <td style="text-align: center">$\cap$</td>
+          <td style="text-align: left">$f&rsquo;&rsquo; \le 0$</td>
+          <td style="text-align: left"><strong>在曲线上方</strong></td>
+          <td style="text-align: left">在曲线下方</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Convex (凸)</strong></td>
+          <td style="text-align: center">$\cup$</td>
+          <td style="text-align: left">$f&rsquo;&rsquo; \ge 0$</td>
+          <td style="text-align: left"><strong>在曲线下方</strong></td>
+          <td style="text-align: left">在曲线上方</td>
+      </tr>
+  </tbody>
+</table>
+<p>我们采取<strong>定义一</strong>,将定义二和三作为<strong>导出结论</strong></p>
+<p>设定目标函数 $f(x)$ 为二阶可导函数，且满足 $f&rsquo;&rsquo;(x) &gt; 0$（即 $f(x)$ 为严格凸函数）。</p>
+<h1 id="利用二阶导数证明切线与曲线位置关系">利用二阶导数证明切线与曲线位置关系</h1>
+<p>设$l(x)$为$f(x)$在点$(x_0,f(x_0))$处的切线,有:</p>
+<p>$l&rsquo;(x)=f&rsquo;(x_0),l(x_0)=f(x_0)$</p>
+<p>于是构造函数$F(x)=f(x)-l(x)$</p>
+<p>$F&rsquo;(x)=f&rsquo;(x)-f&rsquo;(x_0)$</p>
+<p>$x\in (-\infty,x_0),F&rsquo;(x)&lt;0,F(x)单调递减$</p>
+<p>$x\in (x_0,\infty),F&rsquo;(x)&gt;0,F(x)单调递增$</p>
+<p>所以$F(x)\ge F(x_0)=0$</p>
+<h1 id="利用二阶导数证明琴生不等式-jensens-inequality">利用二阶导数证明琴生不等式 (Jensen&rsquo;s Inequality)</h1>
+<h3 id="1-构造辅助函数">1. 构造辅助函数</h3>
+<p>设定目标函数 $f(x)$ 为二阶可导函数，且满足 $f&rsquo;&rsquo;(x) &gt; 0$（即 $f(x)$ 为严格凸函数）。</p>
+<p>为了证明对于 $\lambda \in [0, 1]$，有 $f(\lambda x_1 + (1-\lambda)x_2) \le \lambda f(x_1) + (1-\lambda)f(x_2)$，我们固定 $x_1$ 和 $\lambda$，构造关于 $x$ 的辅助函数 $F(x)$：</p>
+<p>$$F(x) = f(\lambda x_1 + (1-\lambda)x) - \lambda f(x_1) - (1-\lambda)f(x)$$</p>
+<h3 id="2-求导分析">2. 求导分析</h3>
+<p>对 $F(x)$ 关于 $x$ 求一阶导数：
+$$F&rsquo;(x) = (1-\lambda) f&rsquo;(\lambda x_1 + (1-\lambda)x) - (1-\lambda)f&rsquo;(x)$$
+提取公因子后得：
+$$F&rsquo;(x) = (1-\lambda) \left[ f&rsquo;(\lambda x_1 + (1-\lambda)x) - f&rsquo;(x) \right]$$</p>
+<p><strong>已知条件：</strong> 若 $f&rsquo;&rsquo;(x) &gt; 0$，则 $f&rsquo;(x)$ 在定义域上单调递增。</p>
+<hr>
+<h3 id="3-分情况讨论单调性">3. 分情况讨论单调性</h3>
+<h4 id="情况一当-x--x_1-时">情况一：当 $x &lt; x_1$ 时</h4>
+<ol>
+<li><strong>变量位置：</strong> 此时 $\lambda x_1 + (1-\lambda)x$ 是 $x_1$ 和 $x$ 的加权平均值，由于 $x &lt; x_1$，则有：
+$$x &lt; \lambda x_1 + (1-\lambda)x &lt; x_1$$</li>
+<li><strong>导数符号：</strong> 因为 $f&rsquo;(x)$ 单调递增，所以 $f&rsquo;(\lambda x_1 + (1-\lambda)x) &gt; f&rsquo;(x)$。</li>
+<li><strong>结论：</strong> 此时 $F&rsquo;(x) &gt; 0$，函数 $F(x)$ 单调递增。</li>
+</ol>
+<h4 id="情况二当-x--x_1-时">情况二：当 $x &gt; x_1$ 时</h4>
+<ol>
+<li><strong>变量位置：</strong> 由于 $x &gt; x_1$，加权平均值满足：
+$$x_1 &lt; \lambda x_1 + (1-\lambda)x &lt; x$$</li>
+<li><strong>导数符号：</strong> 因为 $f&rsquo;(x)$ 单调递增，所以 $f&rsquo;(\lambda x_1 + (1-\lambda)x) &lt; f&rsquo;(x)$。</li>
+<li><strong>结论：</strong> 此时 $F&rsquo;(x) &lt; 0$，函数 $F(x)$ 单调递减。</li>
+</ol>
+<hr>
+<h3 id="4-最终结论">4. 最终结论</h3>
+<p>计算 $F(x)$ 在 $x = x_1$ 处的值：
+$$F(x_1) = f(\lambda x_1 + (1-\lambda)x_1) - \lambda f(x_1) - (1-\lambda)f(x_1) = 0$$</p>
+<p>由单调性可知，$F(x)$ 在 $x = x_1$ 处取得极大值（也是最大值）$0$。
+因此，对于任意的 $x_2$，均有：
+$$F(x_2) \le F(x_1) = 0$$</p>
+<p>代入 $F(x)$ 的定义式并移项，得证：
+$$f(\lambda x_1 + (1-\lambda)x_2) \le \lambda f(x_1) + (1-\lambda)f(x_2)$$
+等号成立时当且仅当$x_1=x_2$</p>
+<h2 id="利用-n2-结论证明-n-元琴生不等式">利用 $n=2$ 结论证明 $n$ 元琴生不等式</h2>
+<h3 id="1-前提结论已证">1. 前提结论（已证）</h3>
+<p>已知对于 $f&rsquo;&rsquo;(x) &gt; 0$ 的凸函数，二元琴生不等式成立：
+$$f(\lambda x_1 + (1-\lambda)x_2) \le \lambda f(x_1) + (1-\lambda)f(x_2) \quad \text{其中 } \lambda \in [0, 1]$$</p>
+<h3 id="2-核心思想整体代换法">2. 核心思想：整体代换法</h3>
+<p>我们将 $n$ 个变量的加权平均拆分为：<strong>第 $n$ 个变量</strong> 与 <strong>前 $n-1$ 个变量构成的整体</strong>。</p>
+<p>设 $\sum_{i=1}^n \lambda_i = 1$。令 $L = \sum_{i=1}^{n-1} \lambda_i$，则有 $L + \lambda_n = 1$。
+$n$ 元组合式可以改写为：
+$$\sum_{i=1}^n \lambda_i x_i = \left( \sum_{i=1}^{n-1} \lambda_i x_i \right) + \lambda_n x_n = L \cdot \left( \sum_{i=1}^{n-1} \frac{\lambda_i}{L} x_i \right) + \lambda_n x_n$$</p>
+<h3 id="3-推导步骤">3. 推导步骤</h3>
+<h4 id="第一步应用二元结论降维">第一步：应用二元结论（降维）</h4>
+<p>令 $X_{n-1} = \sum_{i=1}^{n-1} \frac{\lambda_i}{L} x_i$，这是一个新的自变量。此时原式变为二元加权：
+$$f\left( L \cdot X_{n-1} + \lambda_n x_n \right)$$
+由于 $L + \lambda_n = 1$，直接套用 <strong>$n=2$</strong> 的结论：
+$$f(L \cdot X_{n-1} + \lambda_n x_n) \le L \cdot f(X_{n-1}) + \lambda_n f(x_n)$$</p>
+<h4 id="第二步迭代展开">第二步：迭代展开</h4>
+<p>现在我们需要处理 $f(X_{n-1})$，即：
+$$f\left( \sum_{i=1}^{n-1} \frac{\lambda_i}{L} x_i \right)$$
+注意到这里的系数和 $\sum_{i=1}^{n-1} \frac{\lambda_i}{L} = \frac{L}{L} = 1$，它依然符合琴生不等式的形式，但规模缩小到了 $n-1$。</p>
+<p>通过重复上述“提取最后一个变量”的操作：</p>
+<ol>
+<li>将 $n-1$ 元拆解为 $(n-2)$ 的整体与第 $n-1$ 个变量，应用一次 $n=2$ 结论。</li>
+<li>将 $n-2$ 元进一步拆解&hellip;</li>
+<li>直到最后拆解为 $n=2$。</li>
+</ol>
+<h4 id="第三步代回原式">第三步：代回原式</h4>
+<p>经过层层拆解（或利用归纳法思想），最终所有项都会被展开为：
+$$f\left( \sum_{i=1}^n \lambda_i x_i \right) \le L \cdot \left[ \sum_{i=1}^{n-1} \frac{\lambda_i}{L} f(x_i) \right] + \lambda_n f(x_n)$$
+消去分母上的 $L$：
+$$f\left( \sum_{i=1}^n \lambda_i x_i \right) \le \sum_{i=1}^{n-1} \lambda_i f(x_i) + \lambda_n f(x_n) = \sum_{i=1}^n \lambda_i f(x_i)$$</p>
+<h3 id="4-结论">4. 结论</h3>
+<p>只要二元形式（$n=2$）成立，就可以通过<strong>将前 $k$ 项看作整体</strong>的方式，像<strong>剥洋葱</strong>一样把不等式推广到任意 $n$ 元情况。
+等号成立时当且仅当$x_1=x_2=&hellip;=x_n$</p>
+<h1 id="实战应用">实战应用</h1>
+<p>常规多项式函数的<strong>凹凸性</strong>可以根据导数简单判断,这里不加赘述.</p>
+<p>但以下四个初等函数是易错的,需要着重记忆:</p>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>条件</th>
+          <th>凹凸性</th>
+          <th>说明（f&rsquo;&rsquo;(x)）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>幂函数</strong> $x^a$（x &gt; 0）</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>a &lt; 0 或 a &gt; 1</td>
+          <td>凸函数</td>
+          <td>a(a−1)xᵃ⁻² &gt; 0</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>0 &lt; a &lt; 1</td>
+          <td>凹函数</td>
+          <td>a(a−1)xᵃ⁻² &lt; 0</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>a = 0 或 a = 1</td>
+          <td>线性</td>
+          <td>凸凹均满足（边界情形）</td>
+      </tr>
+      <tr>
+          <td><strong>指数函数</strong> $b^x$（b &gt; 0, b ≠ 1）</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>b &gt; 0 且 b ≠ 1</td>
+          <td>凸函数</td>
+          <td>(ln b)² · bˣ &gt; 0，平方恒正</td>
+      </tr>
+      <tr>
+          <td><strong>对数函数</strong> $\log_b x$（x &gt; 0, b &gt; 0, b ≠ 1）</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>b &gt; 1（如 ln x）</td>
+          <td>凹函数</td>
+          <td>$\frac{−1}{x² ln b}$ &lt; 0</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>0 &lt; b &lt; 1</td>
+          <td>凸函数</td>
+          <td>$\frac{−1}{x² ln b}$ &gt; 0（ln b &lt; 0）</td>
+      </tr>
+      <tr>
+          <td><strong>对勾函数</strong> $x+\frac{a}{x}$（a &gt; 0）</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>x &gt; 0</td>
+          <td>凸函数</td>
+          <td>2a/x³ &gt; 0</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>x &lt; 0</td>
+          <td>凹函数</td>
+          <td>2a/x³ &lt; 0</td>
+      </tr>
+  </tbody>
+</table>
+<p>从感性的角度认识,函数的凹凸性(或者说琴生不等式)其实描绘的是,自变量集中时和自变量分散时的函数值大小:</p>
+<ol>
+<li>对于凹函数,自变量<strong>集中</strong>时函数值会比较<strong>大</strong>,自变量<strong>分散</strong>时函数值会比较<strong>小</strong></li>
+<li>对于凸函数,以上的结论恰好相反</li>
+</ol>
+<p>仍附上CZW经典图片:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/math/concavity-and-convexity-of-functions/AgACAgEAAyEGAATlvtEQAAMhabZ1eW_Jf1mjyricDz-Yd0JhzfUAAp4Laxu_wbhFN5CbZRs_oDcBAAMCAAN3AAM6BA.png"
+        data-srcset="/posts/math/concavity-and-convexity-of-functions/AgACAgEAAyEGAATlvtEQAAMhabZ1eW_Jf1mjyricDz-Yd0JhzfUAAp4Laxu_wbhFN5CbZRs_oDcBAAMCAAN3AAM6BA.png, /posts/math/concavity-and-convexity-of-functions/AgACAgEAAyEGAATlvtEQAAMhabZ1eW_Jf1mjyricDz-Yd0JhzfUAAp4Laxu_wbhFN5CbZRs_oDcBAAMCAAN3AAM6BA.png 1.5x, /posts/math/concavity-and-convexity-of-functions/AgACAgEAAyEGAATlvtEQAAMhabZ1eW_Jf1mjyricDz-Yd0JhzfUAAp4Laxu_wbhFN5CbZRs_oDcBAAMCAAN3AAM6BA.png 2x"
+        data-sizes="auto"
+        alt="/posts/math/concavity-and-convexity-of-functions/AgACAgEAAyEGAATlvtEQAAMhabZ1eW_Jf1mjyricDz-Yd0JhzfUAAp4Laxu_wbhFN5CbZRs_oDcBAAMCAAN3AAM6BA.png"
+        title="/posts/math/concavity-and-convexity-of-functions/AgACAgEAAyEGAATlvtEQAAMhabZ1eW_Jf1mjyricDz-Yd0JhzfUAAp4Laxu_wbhFN5CbZRs_oDcBAAMCAAN3AAM6BA.png" width="1866" height="1004" /></p>
+<p>以下两种情况琴生不等式适用:</p>
+<ol>
+<li>化成为加(取对数)</li>
+<li>变量分离(单元函数)</li>
+</ol>
+<p>举些例子具体说明一下:</p>
+<h3 id="小试牛刀">小试牛刀</h3>
+<p>1.设$A=\sqrt[3]{3-\sqrt[3]{3}}+\sqrt[3]{3+\sqrt[3]{3}},B=2\sqrt[3]{3}$,比较A,B大小.
+$B\gt A$,证明:</p>
+<p>设$f(x)=x^{\frac{1}{3}}$,由图像判断,$f(x)$为<strong>凹函数</strong>,于是有:</p>
+<p>$$
+A=f(3-\sqrt[3]{3})+f(3+\sqrt[3]{3})\lt 2f(\frac{3-\sqrt[3]{3}+3+\sqrt[3]{3}}{2})=B
+$$
+对于三角函数,一定要注意自变量的<strong>定义域</strong>.</p>
+<p>2.$A,B,C为三角形的内角,证明:sinA+sinB+sinC\ge \frac{3\sqrt{3}}{2}$</p>
+<p>3.$A,B,C$为锐角三角形的内角,证明:</p>
+<p>(1)$cosA+cosB+cosC\le \frac{3}{2}$
+(2)$tanA+tanB+tanC\ge 3\sqrt{3}$</p>
+<p>2,3中直接使用琴生不等式即证.</p>
+<p>4.用<strong>加权</strong>琴生不等式证明<strong>广义</strong>均值不等式:</p>
+<p>$\sum_{i=1}^n \lambda_i = 1,\lambda_i\ge 0,a_i\ge0$,则$\prod_{i=1}^n a_i^{\lambda_i}\le \sum_{i=1}^n a_i\lambda_i$</p>
+<p>证明:</p>
+<p>对左右两式同时取自然对数,原式等价于:
+$$
+\sum_{i=1}^n \lambda_i \ln(a_i)\le \ln(\sum_{i=1}^n a_i\lambda_i)
+$$
+根据题目条件,这正好是加权的琴生不等式.</p>
+<p>推广:若$\sum_{i=1}^n \lambda_i = S &gt; 0$,则:</p>
+<p>$\prod_{i=1}^n a_i^{\lambda_i}\le \sum_{i=1}^n a_i^S\frac{\lambda_i}{S}$</p>
+<p>5.设正实数$a,b,c$满足$a+b+c=abc$,证明:
+$$
+\sum_{cyc} \frac{a}{\sqrt{1+a^2}}\le \frac{3\sqrt{3}}{2}
+$$</p>
+<p>证明:正切三角换元即可,注意<strong>角度范围</strong></p>
+<p>设$a=\tan A,b=\tan B,c=\tan C,A,B,C\in (0,\frac{\pi}{2})$
+原式等价于:$\sin A+\sin B+\sin C\le \frac{3\sqrt{3}}{2}$,这就是2的结论.</p>
+<p>需要注意的是,有些三角不等式由于自变量的范围,<strong>不能</strong>使用琴生不等式</p>
+<p>已知正实数$a,b,c$满足$ab+bc+ca=1$,证明:
+$$
+\frac{1}{\sqrt{1+a^2}}+\frac{2}{\sqrt{1+b^2}}+\frac{3}{\sqrt{1+c^2}}\lt \frac{3\sqrt{14}}{2}
+$$</p>
+<p>证明:
+设$a=\tan A,b=\tan B$,则$c=\frac{1-ab}{a+b}=\frac{1}{\tan(A+B)}=\tan(\frac{\pi}{2}-A-B),A,B\in (0,\frac{\pi}{2})$</p>
+<p>所以令$c=\tan C,C\in (0,\frac{\pi}{2})$,其中$A+B+C=\frac{\pi}{2}$</p>
+<p>原式等价于$\cos A+2\cos B+3\cos C\lt \frac{3\sqrt{14}}{2}$</p>
+<p>$(\cos A+2\cos B+3\cos C)^2\le (1^2+2^2+3^2)(\cos^2 A+\cos^2 B+\cos^2 C)$</p>
+<p>$(\cos^2 A+\cos^2 B+\cos^2 C)=\frac{3}{2}+\frac{\cos 2A+\cos 2B+\cos 2C}{2}$</p>
+<p>这里的$2A,2B,2C\in (0,\pi)$,且$2A+2B+2C=\pi$.</p>
+<p>在$(0,\pi)$上,余弦函数的<strong>凹凸性改变</strong>了,证明遇到了困难.</p>
+<p>解决方法是,不妨设出符合要求的两个角.</p>
+<p>$2A,2B,2C$中必然存在两个锐角,否则不满足和为$\pi$的要求,不妨设$2A,2B$为锐角,则由琴生不等式知:</p>
+<p>$$\begin{gather}
+\cos 2A+\cos 2B+\cos 2C\le 2\cos (A+B)+\cos 2C \
+=\cos 2C+2\sin C=1-2\sin^2 C+2\sin C\le \frac{3}{2}
+\end{gather}$$</p>
+<p>带入柯西不等式即证原命题.</p>
+<p>以上几例都是对琴生不等式的简单套用,但事实上切线不等式或许是更本质的(因为切线不等式可以用于证明琴生不等式,但反之不行)</p>
+<p>有这样一类双参数的小题,可以用切线不等式快速求解:</p>
+<ol>
+<li>$\forall x\in I,kx+b\le f(x)$</li>
+<li>$\forall x\in I,kx+b\le f(x)$</li>
+</ol>
+<p>求$\frac{k}{b}$的范围.</p>
+<p>往往把$f(x)$零点带入不等式,便可以得到最终答案,$f(x)$的凹凸性往往可以证明特殊点求出的范围可以取到.</p>
+<p>6.(2021成都模拟)设$k,b\in R$,不等式$kx+b+1\ge \ln x$在$(0,+\infty)$上恒成立,求$\frac{b}{k}$的最小值.</p>
+<p>不是以上的两种情形,怎么办?我们稍加变形,进行化归.</p>
+<p>$kx+b\ge \ln \frac{x}{e}$,带入$x=e$得$ke+b\ge 0$,又显然$k&gt;0$,故$\frac{b}{k}\ge -e(当且仅当k=\frac{1}{e},b=-1时等号成立,即y=kx+b为y=\ln \frac{x}{e}在(e,0)处的切线)$</p>
+<h3 id="渐入佳境">渐入佳境</h3>
+<p>1.(2022北京)已知函数 $f(x) = e^x \ln(1 + x)$．</p>
+<p>（Ⅰ）求曲线 $y = f(x)$ 在点 $(0, f(0))$ 处的切线方程；</p>
+<p>（Ⅱ）设 $g(x) = f&rsquo;(x)$，讨论函数 $g(x)$ 在 $[0, +\infty)$ 上的单调性；</p>
+<p>（Ⅲ）证明：对任意的 $s, t \in (0, +\infty)$，有 $f(s + t) &gt; f(s) + f(t)$．</p>
+<p>解析:注意到$f(0)=0$,所以(II)等价于$f(0) + f(s + t) &gt; f(s) + f(t)$
+相当于自变量越分散,函数值越大,这是<strong>下凸函数</strong>的特征.</p>
+<p>$f&rsquo;(x)=e^x(\ln(x+1)+\frac{1}{x+1})$</p>
+<p>$f&rsquo;&rsquo;(x)=e^x(\ln(x+1)+\frac{2}{x+1}-\frac{1}{(x+1)^2})=e^x(\ln(x+1)+\frac{2x+1}{(x+1)^2})\gt 0(x\ge 0)$</p>
+<p>剩下的仿照琴生不等式<strong>主元法</strong>证明,洒洒水的事:</p>
+<p>令 $m(x) = f(x+t) - f(x) - f(t) \quad (x &gt; 0)$,</p>
+<p>则 $m&rsquo;(x) = f&rsquo;(x+t) - f&rsquo;(x) = g(x+t) - g(x)$,</p>
+<p>由 (Ⅱ) 中 $g(x)$ 在 $[0, +\infty)$ 上单调递增，则由 $t &gt; 0$ 得 $s+t &gt; s$, 则 $g(x+t) &gt; g(x)$ 即 $m&rsquo;(x) &gt; 0$,</p>
+<p>说明 $m(x)$ 在 $[0, +\infty)$ 上单调递增.</p>
+<p>再由 $s &gt; 0$ 得 $m(s) &gt; m(0)$, 即 $f(s+t) - f(s) - f(t) &gt; f(0+t) - f(0) - f(t) = -f(0)$,</p>
+<p>由 (Ⅰ) 中 $f(0) = 0$ 得 $f(s+t) - f(s) - f(t) &gt; 0$,</p>
+<p>所以 $f(s+t) &gt; f(s) + f(t)$ 成立.</p>
+<p>事实上,根据二元均值不等式,有:</p>
+<p>$f(s+t) &gt; f(s) + f(t) \ge f(\frac{s+t}{2}) (当且仅当s=t时取等)$</p>
+<p>2.(2025-2026 北京顺义高三（上）期末 20)</p>
+<p>已知函数 $f(x) = (x+1)e^x - 2$，直线 $l$ 是曲线 $y = f(x)$ 在点 $(a, f(a)) (a \in \mathbf{R})$ 处的切线.</p>
+<p>（Ⅰ）当 $a=0$ 时，求直线 $l$ 的方程；</p>
+<p>（Ⅱ）求证：函数 $f(x)$ 有唯一零点；</p>
+<p>（Ⅲ）记 $f(x)$ 的零点为 $x_0$，当直线 $l$ 与 $x$ 轴相交时，交点横坐标为 $x_1$. 若 $x_1 \ge x_0$，求 $a$ 的取值范围.</p>
+<p>【参考答案】</p>
+<p>$a &gt; -2$.</p>
+<p>【解析】</p>
+<p>【分析】</p>
+<p>先解得 $x_1 = a - \frac{f(a)}{f&rsquo;(a)}$，再构造函数 $F(x) = x - \frac{f(x)}{f&rsquo;(x)}$，再用导数判断 $F(x) \ge F(x_0) = x_0$ 成立的条件可得。</p>
+<p>【详解】</p>
+<p>由(1)可知直线 $l$ 的方程为</p>
+<p>$y - f(a) = f&rsquo;(a)(x - a)$,</p>
+<p>因为直线 $l$ 与 $x$ 轴相交，且交点的横坐标为 $x_1$，</p>
+<p>$f&rsquo;(a) = (a+2)e^a$,</p>
+<p>所以令 $y=0$，当 $a \ne -2$ 时，有</p>
+<p>$x_1 = a - \frac{f(a)}{f&rsquo;(a)}$.</p>
+<p>设 $F(x) = x - \frac{f(x)}{f&rsquo;(x)}$，则</p>
+<p>$F&rsquo;(x) = 1 - \frac{[f&rsquo;(x)]^2 - f(x)(f&rsquo;(x))&rsquo;}{[f&rsquo;(x)]^2}$</p>
+<p>$= \frac{f(x)(f&rsquo;(x))&rsquo;}{[f&rsquo;(x)]^2}$.</p>
+<p>又 $[f&rsquo;(x)]&rsquo; = (x+3)e^x$，所以</p>
+<p>$F&rsquo;(x) = \frac{f(x)(x+3)}{e^x(x+2)^2}, x \ne -2$</p>
+<p>由(2)知 $0 &lt; x_0 &lt; 1$，且当 $x &lt; x_0, f(x) &lt; 0$，且 $x &gt; x_0, f(x) &gt; 0$.</p>
+<p>所以当 $x &gt; x_0$ 或 $x &lt; -3$ 时，$F&rsquo;(x) &gt; 0$；当 $-3 &lt; x &lt; -2$ 或 $-2 &lt; x &lt; x_0$ 时，$F&rsquo;(x) &lt; 0$.</p>
+<p>列表可得</p>
+<table>
+  <thead>
+      <tr>
+          <th>$x$</th>
+          <th>$(-\infty, -3)$</th>
+          <th>$-3$</th>
+          <th>$(-3, -2)$</th>
+          <th>$(-2, x_0)$</th>
+          <th>$x_0$</th>
+          <th>$(x_0, +\infty)$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$F&rsquo;(x)$</td>
+          <td>$+$</td>
+          <td>$0$</td>
+          <td>$-$</td>
+          <td>$-$</td>
+          <td>$0$</td>
+          <td>$+$</td>
+      </tr>
+      <tr>
+          <td>$F(x)$</td>
+          <td>单调递增</td>
+          <td>极大值</td>
+          <td>单调递减</td>
+          <td>单调递减</td>
+          <td>极小值</td>
+          <td>单调递增</td>
+      </tr>
+  </tbody>
+</table>
+<p>当 $x &lt; -2$ 时，</p>
+<p>$F(x) \le F(-3) = -3 - \frac{2(e^{-3} + 1)}{e^{-3}} &lt; 0 &lt; x_0$,</p>
+<p>不满足 $x_1 \ge x_0$,</p>
+<p>当 $x &gt; -2$ 时，$F(x) \ge F(x_0) = x_0$，即 $x_1 \ge x_0$ 成立</p>
+<p>综上可知，$a &gt; -2$.</p>
+<hr>
+<p>答案的做法固然易懂,但是没有触及问题的本质,所以徒增了运算之劳.</p>
+<p>仿照小试牛刀6的过程,我们进行解答:</p>
+<p>$f&rsquo;(a) = (a+2)e^a$,</p>
+<p>$f&rsquo;&rsquo;(a)=[f&rsquo;(a)]&rsquo; = (a+3)e^a$</p>
+<p>首先在$a\in (-\infty,-2)$时,显然有切线斜率小于0且切点在第三象限,此时$x_1&lt;0&lt;x_0$,不合题意;</p>
+<p>当$x=-2$时,切线平行于$x轴$,不合题意:</p>
+<p>$x\in (-2,+\infty)$时,$f&rsquo;&rsquo;(x)&gt;0,f(x)$为凸函数,由<a href="/posts/math/concavity-and-convexity-of-functions/#%E5%88%A9%E7%94%A8%E4%BA%8C%E9%98%B6%E5%AF%BC%E6%95%B0%E8%AF%81%E6%98%8E%E5%88%87%E7%BA%BF%E4%B8%8E%E6%9B%B2%E7%BA%BF%E4%BD%8D%E7%BD%AE%E5%85%B3%E7%B3%BB" rel="">切线与凸函数的关系</a>知:</p>
+<p>$l(x)\le f(x)$,而$直线l$的斜率为正,于是有:</p>
+<p>$l(x_0)\le f(x_0)=0=l(x_1),x_1\ge x_0$</p>
+<p>很容易就证完了,过程也很好写,因为问题不在于求出$x_1$的具体值,而是说明$x_1\ge x_0$.</p>
+<p>以上的两道题,运用切线与函数的位置关系,对问题进行了巧妙的转换.但须知凹凸性只是切线在函数上/下方的充分条件,而非必要条件.</p>
+<p>对于凹凸性改变的函数,切线同样是很好的媒介,从以下两道题便可见一斑:
+3.(2022丰台)已知函数 $f(x)=\dfrac{ax+1}{e^x}$。</p>
+<p>(Ⅰ) 当 $a=1$ 时，求 $f(x)$ 的单调区间和极值；</p>
+<p>(Ⅱ) 当 $a\geqslant 1$ 时，求证：$f(x)\leqslant (a-1)x+1$；</p>
+<p>(Ⅲ) 直接写出 $a$ 的一个取值范围，使得 $f(x)\geqslant ax^2+(a-1)x+1$ 恒成立。</p>
+<p>第一问证明从略.第二问有明显的&quot;切线在函数上方&quot;特征,故考虑函数的凹凸性.</p>
+<p>$f&rsquo;(x)=\frac{-ax+a-1}{e^x},f&rsquo;&rsquo;(x)=\frac{ax-(2a-1)}{e^x}$</p>
+<p>当$x\in (-\infty,\frac{2a-1}{a})$时,$f&rsquo;&rsquo;(x)&lt;0$,$f(x)$为凹函数,原不等式成立.</p>
+<p>当$x\in (\frac{2a-1}{a},+\infty)$时,$f(x)$变为凸函数(为什么?因为x轴为渐近线),需要细微的讨论.</p>
+<p>此时$x\gt \frac{a-1}{a},f&rsquo;(x)&lt;0$,当$x$增大时,左式单调递减,右式单调递增,原不等式显然成立.</p>
+<p>对于(III),当$a&gt;0$时,显然不符合题意,因为左式存在最大值,右式可以任意大.</p>
+<p>当$a\le 0$时,经过类似的讨论可知$f(x)\ge (a-1)x+1$,这条直线便可以成为连接二次函数与原函数的&quot;媒人&quot;(此时,右式代表的直线为切线,二次函数为凹函数,恒在直线下方,原函数虽然不是凸函数,但是严格在直线上方),原不等式显然成立.</p>
+<p>4.已知函数 $f(x) = \dfrac{\ln x}{x}$。</p>
+<p>(Ⅰ) 求函数 $f(x)$ 的单调区间；</p>
+<p>(Ⅱ) 设 $g(x) = f(x) - x$，求证：$g(x) \leqslant -1$；</p>
+<p>(Ⅲ) 设 $h(x) = f(x) - x^2 + 2ax - 4a^2 + 1$。<br>
+若存在 $x_0$ 使得 $h(x_0) \geqslant 0$，求 $a$ 的最大值。</p>
+<p>仿照3的讨论,可以证明(II).</p>
+<p>对于(III),$h(x_0)\ge 0$相当于二次函数$y=x^2-2ax+4a^2-1$有在$f(x)$下方的部分,而由图像易知此时切线$y=x-1$与二次函数存在交点.</p>
+<p>诚然,这种几何直觉不能代替代数证明,但这种观察给了书写以提示,即使用$f(x)\le x-1$这一不等式,把$\ln x$转化为多项式函数,然后用判别式求出$a$的范围,最后对最大值加以检验.</p>
+<p>前面的铺垫已经足够,这道题供读者自行练习(答案$\frac{1}{2}$)</p>
+<p>若存在 $x_0$ 使得 $h(x_0) \geqslant 0$，求 $a$ 的最大值。
+5.已知正数$a_i(i=1,2,&hellip;,n)满足\sum^{n}<em>{i=1}{a_i}=1,求证\prod^{n}</em>{i=1}{a_i+\frac{1}{a_i}}\ge(n+\frac{1}{n})^n$</p>
+<h3 id="证法一教科书解析版">证法一：教科书解析版</h3>
+<p><strong>题目：</strong> 设 $f(x) = \ln(x + \frac{1}{x})$，证明对任意 $a, b \in (0, 1)$，有 $\frac{\ln(a + \frac{1}{a}) + \ln(b + \frac{1}{b})}{2} \geqslant \ln(\frac{a+b}{2} + \frac{2}{a+b})$。</p>
+<p><strong>证明过程：</strong></p>
+<p>即证：$(a + \frac{1}{a})(b + \frac{1}{b}) \geqslant (\frac{a+b}{2} + \frac{2}{a+b})^2$
+即：$ab + \frac{1}{ab} + \frac{a}{b} + \frac{b}{a} \geqslant (\frac{a+b}{2})^2 + \frac{4}{(a+b)^2} + 2$  —— $(*)$</p>
+<p>又 $\frac{a}{b} + \frac{b}{a} \geqslant 2$，$ab \leqslant (\frac{a+b}{2})^2$
+并且 $y = x + \frac{1}{x}$ 在 $(0, 1]$ 为单调递减函数，
+所以由 $ab \leqslant (\frac{a+b}{2})^2$ 可得 $ab + \frac{1}{ab} \geqslant (\frac{a+b}{2})^2 + \frac{1}{(\frac{a+b}{2})^2} = (\frac{a+b}{2})^2 + \frac{4}{(a+b)^2}$
+从而 $(*)$ 式成立。所以 $f(x) = \ln(x + \frac{1}{x})$ 在 $(0, 1)$ 内为下凸函数。</p>
+<p>由<strong>琴生不等式</strong>（Jensen&rsquo;s Inequality）：</p>
+<p>$$\frac{1}{n} \sum_{i=1}^{n} \ln(a_i + \frac{1}{a_i}) \geqslant \ln\left(\frac{\sum_{i=1}^{n} a_i}{n} + \frac{n}{\sum_{i=1}^{n} a_i}\right) = \ln(n + \frac{1}{n})$$</p>
+<p>（注：此处对应 $\sum a_i = 1$ 的特定情况）</p>
+<hr>
+<h3 id="证法二导数推导版利用导数验证凸性">证法二：导数推导版（利用导数验证凸性）</h3>
+<p><strong>已知：</strong> $a_i &gt; 0, \sum_{i=1}^{n} a_i = 1$
+<strong>求证：</strong> $\prod_{i=1}^{n} (a_i + \frac{1}{a_i}) \geqslant (n + \frac{1}{n})^n$</p>
+<p><strong>证明过程：</strong></p>
+<p>令 $f(x) = \ln(x + \frac{1}{x})$，对其求导：</p>
+<p>$$f&rsquo;(x) = \frac{1}{x + \frac{1}{x}} \cdot (1 - \frac{1}{x^2}) = \frac{x}{x^2 + 1} \cdot \frac{x^2 - 1}{x^2} = \frac{x^2 - 1}{x(x^2 + 1)}$$</p>
+<p>当 $x \in (0, 1)$ 时：
+$x^2 - 1 &lt; 0$ 且 $x(x^2 + 1) &gt; 0$，故 $f&rsquo;(x) &lt; 0$，函数单调递减。</p>
+<p>继续考察 $f&rsquo;(x)$ 的单调性（即 $f(x)$ 的凸性）：
+对于 $x_1 &lt; x_2 &lt; 1$，通过对比可知 $f&rsquo;(x_1) &lt; f&rsquo;(x_2)$，即 $f&rsquo;(x)$ 在 $(0, 1)$ 上单调递增。
+因此 $f&rsquo;&rsquo;(x) &gt; 0$，说明 $f(x)$ 在 $(0, 1)$ 上是<strong>下凸函数</strong>。</p>
+<p>根据<strong>琴生不等式</strong>：</p>
+<p>$$\sum_{i=1}^{n} f(a_i) \geqslant n f\left(\frac{\sum a_i}{n}\right)$$</p>
+<p>$$\ln \prod_{i=1}^{n} (a_i + \frac{1}{a_i}) \geqslant n \ln\left(\frac{1}{n} + \frac{1}{1/n}\right) = n \ln(n + \frac{1}{n}) = \ln(n + \frac{1}{n})^n$$</p>
+<p>去对数得：</p>
+<p>$$\prod_{i=1}^{n} (a_i + \frac{1}{a_i}) \geqslant (n + \frac{1}{n})^n$$</p>
+<p>证毕。</p>
+<p>一般来说,往往<strong>取倒数</strong>或<strong>取相反数</strong>可以改变不等号的方向:</p>
+<p>3.(北大保送生考试)已知正实数$b_1,b_2,&hellip;,b_n$满足$\sum_{i=1}^n b_i=1$,证明:</p>
+<p>$$ \frac{1}{n}\le \prod_{i=1}^n b_i^{b_i}\le \sum_{i=1}^n b_i^2$$</p>
+<p>首先注意到取等条件是<strong>变量全部相等</strong>,显然需要<strong>取自然对数</strong>.</p>
+<p>$$ -\ln n\le \sum_{i=1}^n(b_i\ln b_i)\le \ln(\sum_{i=1}^n b_i^2)$$</p>
+<p>右边是好证的,使用<strong>广义琴生不等式</strong>即可.</p>
+<p>左边可以用$f(x)=x\ln x$的<strong>琴生不等式</strong>证明,但实际上不必如此繁,<strong>取相反数</strong>后相当于:</p>
+<p>$$\ln n\ge \sum_{i=1}^n(b_i\ln \frac{1}{b_i})$$</p>
+<p>其实就是$f(x)=\ln x$的琴生不等式(但是不等号方向发生了改变)</p>
+<h1 id="结语claude">结语(Claude)</h1>
+<h2 id="评价">评价</h2>
+<p>这篇博客写得相当不错，有几点值得称道：</p>
+<p><strong>优点</strong></p>
+<p>内容体系完整，从二阶导定义出发，经切线不等式、Jensen不等式，到实战应用，层层递进，逻辑链条清晰。证明部分尤其扎实，用辅助函数构造Jensen不等式的推导比大多数教材都写得清楚。</p>
+<p>例题选取也很用心，从三角形内角的基础题到北大保送生考试题，梯度合理。特别是对2025顺义期末第20题标答的批评——&ldquo;有病&rdquo;、&ldquo;bullshit&rdquo;——一针见血，自己给出的凸函数切线法确实干净得多，体现了作者对凹凸性工具的真正掌握，而不只是套路。</p>
+<p>对本题（即原题）的处理也诚实：明确指出 $\cos x$ 在 $x=\pi/2$ 处凹凸性改变，Jensen不可直接用，并指出应走<strong>Cauchy+调整法</strong>的路线，没有强行用错误的方法糊弄过去。</p>
+<p><strong>小瑕疵</strong></p>
+<p>符号约定（凹/凸的中文与国际标准的对应）在开头解释了，但后文偶有混用，初学者容易绕晕。另外证法二中 $f&rsquo;&rsquo;(x)&gt;0$ 的验证是口头断言的，稍显不严谨。</p>
+<hr>
+<h2 id="建议结语">建议结语</h2>
+<blockquote>
+<p>凹凸性本质上刻画的是一件朴素的事：<strong>函数对&quot;平均&quot;的态度</strong>。凸函数偏爱分散，凹函数偏爱集中，Jensen不等式不过是这一直觉的精确化。</p>
+<p>然而工具再好，也有边界。$\cos x$ 的例子提醒我们：在使用Jensen之前，永远要先验证凹凸性在整个定义域上是否一致——否则，换元带来的优雅会瞬间坍塌成谬误。</p>
+<p>数学的乐趣或许正在于此：每一个&quot;洒洒水&quot;的背后，都藏着一个值得认真对待的细节。</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-03-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-title="浅谈函数的凹凸性" data-hashtags="导数"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-title="浅谈函数的凹凸性"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-hashtag="导数"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-title="浅谈函数的凹凸性"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-title="浅谈函数的凹凸性"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-title="浅谈函数的凹凸性"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/math/concavity-and-convexity-of-functions/" data-title="浅谈函数的凹凸性" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fmath%2fconcavity-and-convexity-of-functions%2f&amp;text=%e6%b5%85%e8%b0%88%e5%87%bd%e6%95%b0%e7%9a%84%e5%87%b9%e5%87%b8%e6%80%a7" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%AF%BC%E6%95%B0/">导数</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/math/constrained-extremum-problem001/" class="prev" rel="prev" title="约束条件最值一百题001"><i class="fas fa-angle-left" aria-hidden="true"></i>约束条件最值一百题001</a>
+            <a href="/posts/math/2026-3-27-lwy-review/" class="next" rel="next" title="26年3月27日课堂复盘">26年3月27日课堂复盘<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

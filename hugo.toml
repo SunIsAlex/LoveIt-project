@@ -1,0 +1,33 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme="LoveIt"
+[menu]
+    [[menu.main]]
+        name = '🏠Home'
+        url = '/'
+        weight = 1
+    [[menu.main]]
+        name = '📂Cat'
+        url = '/categories/'
+        weight = 2
+    [[menu.main]]
+        name = '🏷️Tag'
+        url = '/tags/'
+        weight = 3
+    [[menu.main]]
+        name = '📜Arch'
+        url = '/archive/'
+        weight = 4
+    [[menu.main]]
+        name = '🔍'
+        url = '/search/'
+        weight = 5
+
+[params.page.math]
+  enable = true          # 必须设为 true 才能启用 KaTeX
+  # 可选扩展（推荐开启）
+  # 分隔符自定义（通常保持默认即可）
+  # inlineLeftDelimiter = ""   # 内联公式左分隔符，默认 $
+  # inlineRightDelimiter = ""
+  # blockLeftDelimiter = ""    # 块公式左分隔符，默认 \[ # blockRightDelimiter = ""

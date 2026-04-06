@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>English - Category - My New Hugo Site</title>
+        <link>http://localhost:1313/categories/english/</link>
+        <description>English - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 02 Feb 2026 22:17:46 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/english/" rel="self" type="application/rss+xml" /><item>
+    <title>20260202语法填空</title>
+    <link>http://localhost:1313/posts/yufa-tiankong-01/</link>
+    <pubDate>Mon, 02 Feb 2026 22:17:46 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/posts/yufa-tiankong-01/</guid>
+    <description><![CDATA[<p>1.with</p>
+<p>2.invite</p>
+<p>4.which</p>
+<p>5.instruments</p>
+<p>6.attractive</p>
+<p>7.Obviously</p>
+<p>8.is known</p>
+<p>9.its</p>
+<p>10.to experience</p>
+<p>1.where</p>
+<p>2.to freeze</p>
+<p>3.an</p>
+<p>4.freezers</p>
+<p><del>5.since</del></p>
+<blockquote>
+<p>The house has been exactly furnished, and includes both original and copy items similar to those which would have been there in the house ____ Shakespeare was a child.</p>
+</blockquote>
+<p>此处的house是被restored了，并非保留原状</p>
+<p>5.when</p>
+<p>6.hangs</p>
+<p>7.mentioned</p>
+<p>8.conversations</p>
+<p><del>9.talked</del></p>
+<blockquote>
+<p>An important negative effect of gossip is that it can hurt the person _______ about.</p>
+</blockquote>
+<p>此处应为<em>被讨论</em></p>
+<p>9.<em>being</em> talked</p>]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>每日艺题 DAY001 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/math/meiri-yiti-day001/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="每日艺题 DAY001">
+  <meta property="og:description" content="(S_{n},a_{n})联袂数列(无通项) 题目：
+已知 ({a_n}) 是各项均为正数的无穷数列,其前 (n) 项和为 (S_n),且
+[ a_n &#43; S_n = a_n S_n \quad (n \in \mathbb{N}^) ]
+给出下列四个结论： ① (a_2 = \sqrt{2})；
+② 存在一个正数 (m_0),使得对任意的 (n \in \mathbb{N}^),都有 (S_n &lt; m_0)；
+③ 数列 ({a_n}) 单调递减；
+④ 对任意的 (n \in \mathbb{N}^*),(n \geq 2),都有 (a_{n-1} &#43; a_{n&#43;1} &gt; 2a_n)。
+其中所有正确结论的序号是___。 (SRC:北京101中2025-2026第一学期高三数学统练二)
+先算几项,寻找规律：
+n (a_{n}) 1 2 2 (\sqrt{2}) 3 (\cfrac{-\sqrt{2}&#43;\sqrt{10&#43;4\sqrt{2}}}{2} ) 根据计算,①正确.
+到第三项,数列已经开始崩坏不好算了.
+可以预见的是,通项应该是没戏的.
+不过大概可以看出,(a_{3}\lt \cfrac{-\sqrt{2}&#43;\sqrt{18}}{2}=\sqrt{2}=a_{2}\lt a_{1} ),数列({a_{n}})是递减数列.
+这也比较符合直觉,(a_{n}=\cfrac{S_{n}}{S_{n}-1}=1&#43;\cfrac{1}{S_{n}-1}),而(a_{n}\gt 0,S_{n})单调递增,那么(a_{n})必然单调递减,并且始终大于1.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-10T17:31:25+08:00">
+    <meta property="article:modified_time" content="2026-02-10T17:31:25+08:00">
+    <meta property="article:tag" content="数学">
+    <meta property="article:tag" content="数列">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="每日艺题 DAY001">
+  <meta name="twitter:description" content="(S_{n},a_{n})联袂数列(无通项) 题目：
+已知 ({a_n}) 是各项均为正数的无穷数列,其前 (n) 项和为 (S_n),且
+[ a_n &#43; S_n = a_n S_n \quad (n \in \mathbb{N}^) ]
+给出下列四个结论： ① (a_2 = \sqrt{2})；
+② 存在一个正数 (m_0),使得对任意的 (n \in \mathbb{N}^),都有 (S_n &lt; m_0)；
+③ 数列 ({a_n}) 单调递减；
+④ 对任意的 (n \in \mathbb{N}^*),(n \geq 2),都有 (a_{n-1} &#43; a_{n&#43;1} &gt; 2a_n)。
+其中所有正确结论的序号是___。 (SRC:北京101中2025-2026第一学期高三数学统练二)
+先算几项,寻找规律：
+n (a_{n}) 1 2 2 (\sqrt{2}) 3 (\cfrac{-\sqrt{2}&#43;\sqrt{10&#43;4\sqrt{2}}}{2} ) 根据计算,①正确.
+到第三项,数列已经开始崩坏不好算了.
+可以预见的是,通项应该是没戏的.
+不过大概可以看出,(a_{3}\lt \cfrac{-\sqrt{2}&#43;\sqrt{18}}{2}=\sqrt{2}=a_{2}\lt a_{1} ),数列({a_{n}})是递减数列.
+这也比较符合直觉,(a_{n}=\cfrac{S_{n}}{S_{n}-1}=1&#43;\cfrac{1}{S_{n}-1}),而(a_{n}\gt 0,S_{n})单调递增,那么(a_{n})必然单调递减,并且始终大于1.">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/math/meiri-yiti-day001/" /><link rel="next" href="http://localhost:1313/posts/math/meiri-yiti-day002/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "每日艺题 DAY001",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/math\/meiri-yiti-day001\/"
+        },"genre": "posts","keywords": "数学, 数列","wordcount":  586 ,
+        "url": "http:\/\/localhost:1313\/posts\/math\/meiri-yiti-day001\/","datePublished": "2026-02-10T17:31:25+08:00","dateModified": "2026-02-10T17:31:25+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">每日艺题 DAY001</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%AF%8F%E6%97%A5%E8%89%BA%E9%A2%98/"><i class="far fa-folder" aria-hidden="true"></i>每日艺题</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-10">2026-02-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;586 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#拓展研究">拓展研究:</a>
+      <ul>
+        <li><a href="#1-单调递增有上界数列收敛">1. <strong>单调递增有上界数列收敛</strong></a></li>
+        <li><a href="#2-单调递减有下界数列收敛">2. <strong>单调递减有下界数列收敛</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#旁征博引">旁征博引</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="s_na_n联袂数列无通项">(S_{n},a_{n})联袂数列(无通项)</h1>
+<p><strong>题目：</strong></p>
+<blockquote>
+<p>已知 ({a_n}) 是各项均为正数的无穷数列,其前 (n) 项和为 (S_n),且<br>
+[
+a_n + S_n = a_n S_n \quad (n \in \mathbb{N}^<em>)
+]<br>
+给出下列四个结论：
+① (a_2 = \sqrt{2})；<br>
+② 存在一个正数 (m_0),使得对任意的 (n \in \mathbb{N}^</em>),都有 (S_n &lt; m_0)；<br>
+③ 数列 ({a_n}) 单调递减；<br>
+④ 对任意的 (n \in \mathbb{N}^*),(n \geq 2),都有 (a_{n-1} + a_{n+1} &gt; 2a_n)。<br>
+其中所有正确结论的序号是___。
+(SRC:北京101中2025-2026第一学期高三数学统练二)</p>
+</blockquote>
+<p>先算几项,寻找规律：</p>
+<table>
+  <thead>
+      <tr>
+          <th>n</th>
+          <th>(a_{n})</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>(\sqrt{2})</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>(\cfrac{-\sqrt{2}+\sqrt{10+4\sqrt{2}}}{2} )</td>
+      </tr>
+  </tbody>
+</table>
+<p>根据计算,<strong>①正确</strong>.</p>
+<p>到第三项,数列已经开始<del>崩坏</del>不好算了.</p>
+<p>可以预见的是,通项应该是没戏的.</p>
+<p>不过大概可以看出,(a_{3}\lt \cfrac{-\sqrt{2}+\sqrt{18}}{2}=\sqrt{2}=a_{2}\lt a_{1} ),数列({a_{n}})是递减数列.</p>
+<p>这也比较符合直觉,(a_{n}=\cfrac{S_{n}}{S_{n}-1}=1+\cfrac{1}{S_{n}-1}),而(a_{n}\gt 0,S_{n})单调递增,那么(a_{n})必然单调递减,并且始终大于1.</p>
+<p>这样，便可以确定<strong>③正确</strong>.</p>
+<p>由以上推理,有(a_{n}\gt 1),那么(S_{n})显然没有上界，<strong>②错误</strong>.</p>
+<p>④等价于
+$$
+a_{n-1}-a_{n}\gt a_{n}-a_{n+1}\gt 0
+$$
+即(a_{n})递减的速度越来越慢,这也是合理的,毕竟(a_{n})有下界1.</p>
+<p>我们下面消去(S_{n}),证明这一点:
+$$
+\begin{gather}
+S_{n}=1+\cfrac{1}{a_{n}-1}\
+S_{n+1}=1+\cfrac{1}{a_{n+1}-1}\
+(为什么写成这样的形式?\分式相减可以让分母相减,\分离常数可以让常数抵消)\
+a_{n+1}=-\cfrac{1}{a_{n}-1}+\cfrac{1}{a_{n+1}-1}\
+=\cfrac{a_{n}-a_{n+1}}{(a_{n}-1)(a_{n+1}-1)}\
+a_{n}-a_{n+1}=(a_{n}-1)(a_{n+1}-1)a_{n+1} ①\
+a_{n-1}-a_{n}=(a_{n-1}-1)(a_{n}-1)a_{n} ②\
+显然有②\gt ①\
+Q.E.D
+\end{gather}
+$$
+不注意到分离常数的好处,证明④就比较困难:</p>
+<p>贴一下AI(Grok)的证明:</p>
+<p>To prove that (a_{n-1} + a_{n+1} &gt; 2a_n) for all (n \geq 2), introduce the auxiliary sequence (c_k = a_k - 1) for (k \in \mathbb{N}^*). Since (a_k &gt; 1) (as seen from the explicit terms and the form (a_k = 1 + \frac{2}{\sqrt{S_{k-1}^2 + 4} + S_{k-1}} &gt; 1)), it follows that (c_k &gt; 0).</p>
+<p>The inequality (a_{n-1} + a_{n+1} &gt; 2a_n) is equivalent to (c_{n-1} + c_{n+1} &gt; 2c_n).</p>
+<p>Define the function (g(x) = \frac{\sqrt{x^2 + 4} - x}{2}) for (x &gt; 1) (noting (S_k &gt; 1)). Then (c_k = g(S_{k-1})), so the inequality becomes (g(S_{n-2}) + g(S_n) &gt; 2g(S_{n-1})).</p>
+<p>The function (g(x)) is strictly decreasing ((g&rsquo;(x) &lt; 0)) and strictly convex ((g&rsquo;&rsquo;(x) &gt; 0)), as verified by computing the derivatives:</p>
+<ul>
+<li>(g&rsquo;(x) = - \frac{2(1 + \frac{x}{\sqrt{x^2 + 4}})}{(x + \sqrt{x^2 + 4})^2} &lt; 0),</li>
+<li>(g&rsquo;&rsquo;(x) &gt; 0) (detailed calculation shows the numerator (2h^2 - h&rsquo;d &gt; 0), where (h(x) = 1 + \frac{x}{\sqrt{x^2 + 4}}), (h&rsquo;(x) = \frac{4}{(x^2 + 4)^{3/2}}), and (d = x + \sqrt{x^2 + 4})).</li>
+</ul>
+<p>Since ({a_k}) is strictly decreasing ((a_k &gt; a_{k+1} &gt; 1)), the partial sums satisfy (S_n - S_{n-1} = a_n &lt; a_{n-1} = S_{n-1} - S_{n-2}), so (\frac{S_{n-2} + S_n}{2} &lt; S_{n-1}).</p>
+<p>By strict convexity of (g), (g\left(\frac{S_{n-2} + S_n}{2}\right) &lt; \frac{g(S_{n-2}) + g(S_n)}{2}) (strict since (S_{n-2} &lt; S_n)).</p>
+<p>Since (g) is strictly decreasing and (\frac{S_{n-2} + S_n}{2} &lt; S_{n-1}), it follows that (g\left(\frac{S_{n-2} + S_n}{2}\right) &gt; g(S_{n-1})).</p>
+<p>Combining these, (\frac{g(S_{n-2}) + g(S_n)}{2} &gt; g\left(\frac{S_{n-2} + S_n}{2}\right) &gt; g(S_{n-1})), so (g(S_{n-2}) + g(S_n) &gt; 2g(S_{n-1})).</p>
+<p>Thus, the inequality holds strictly for all (n \geq 2).
+函数凹凸性都出来了,反正逆天程度是超出人类想象的<em>D:</em></p>
+<p>DeepSeek和Grok都不约而同的构造了(a_{n}-1)作为辅助数列,何意味.</p>
+<h2 id="拓展研究">拓展研究:</h2>
+<p>(a_{n})是否能无限接近1?</p>
+<p>这从直觉上讲是完全合乎理性的.</p>
+<p>补充一个引理(Lemma):</p>
+<blockquote>
+<p><strong>单调有界定理</strong>（Monotone Convergence Theorem）是实数系完备性的一个重要体现，包括两个部分：</p>
+<h3 id="1-单调递增有上界数列收敛">1. <strong>单调递增有上界数列收敛</strong></h3>
+<p>若数列 ({a_n}) 满足：</p>
+<ul>
+<li>单调递增：(a_n \leq a_{n+1}) 对所有 (n \in \mathbb{N}^*) 成立</li>
+<li>有上界：存在实数 (M)，使得 (a_n \leq M) 对所有 (n) 成立
+则 ({a_n}) 收敛，且
+[
+\lim_{n \to \infty} a_n = \sup{a_n : n \in \mathbb{N}^*}
+]</li>
+</ul>
+<h3 id="2-单调递减有下界数列收敛">2. <strong>单调递减有下界数列收敛</strong></h3>
+<p>若数列 ({a_n}) 满足：</p>
+<ul>
+<li>单调递减：(a_n \geq a_{n+1}) 对所有 (n \in \mathbb{N}^*) 成立</li>
+<li>有下界：存在实数 (m)，使得 (a_n \geq m) 对所有 (n) 成立
+则 ({a_n}) 收敛，且
+[
+\lim_{n \to \infty} a_n = \inf{a_n : n \in \mathbb{N}^*}
+]
+PS:这里<strong>sup,inf</strong>分别是<strong>上确界</strong>和<strong>下确界</strong>的意思</li>
+</ul>
+</blockquote>
+<p>在101中的这道题目中,(a_{n})有下界1,且单调递减,那么肯定存在极限.</p>
+<p>直接证明极限为1比较困难,我们不妨使用反证法:
+$$
+\begin{gather}
+设\lim_{n \to \infty} a_{n}=L\
+假设L\gt 1\
+a_{N}=1+\cfrac{1}{S_{N}-1}\
+取N=1+\cfrac{1}{L-1},S_{N}\gt NL\gt N\
+a_{N}\lt 1+\cfrac{1}{N-1}=L
+\推出矛盾!\
+又L\ge 1,一定有L=1\
+Q.E.D
+\end{gather}
+$$</p>
+<h2 id="旁征博引">旁征博引</h2>
+<blockquote>
+<p><strong>题目：</strong><br>
+已知数列 ({a_n}) 的各项均为正数，其前 (n) 项和为 (S_n)，满足<br>
+[
+a_n \cdot S_n = 9 \quad (n=1,2,\dots)
+]<br>
+给出下列四个结论：
+① ({a_n}) 的第 2 项小于 3；<br>
+② ({a_n}) 为等比数列；<br>
+③ ({a_n}) 为递减数列；<br>
+④ ({a_n}) 中存在小于 (\frac{1}{100}) 的项。<br>
+其中所有正确结论的序号是______。
+(2022北京卷T15)</p>
+</blockquote>
+<p>我们并不关心①②③,这是非常容易判断的,重点在于④:
+$$
+\begin{gather}
+S_{n}=\cfrac{9}{a_{n}}\
+S_{n+1}=\cfrac{9}{a_{n+1}}\
+a_{n+1}=\cfrac{9(a_{n}-a_{n+1})}{a_{n}a_{n+1}}(♣)\
+由于数列 {a_n} 的各项均为正数,显然有a_{n}-a_{n+1}&gt;0\
+则a_{n}是递减数列,且有下界1\
+应用单调有界定理,知a_{n}存在极限L\
+对♣等式左右两边求极限:\
+L=\cfrac{9(L-L)}{L^2}=0\
+那么对于足够大的n,a_n可以无限接近于0,④显然错误
+\end{gather}
+$$</p>
+<blockquote>
+<p>已知 ({a_n}) 是各项均为正数的无穷数列，其前 (n) 项和为[ S_n, \text{且} \frac{1}{a_n} + \frac{1}{S_n} = 1 \ (n \in \mathbb{N}^<em>). ]<br>
+给出下列四个结论：<br>
+① (a_1 + a_3 &gt; 2a_2);<br>
+② (\exists n_0 \in \mathbb{N}^</em>)，使得 (a_{n_0} &lt; \dfrac{2025}{2024});<br>
+③ 存在一个正数 (m_0)，使得对任意的 (n \in \mathbb{N}^<em>)，都有 (S_n &lt; m_0);<br>
+④ 对任意的 (n \in \mathbb{N}^</em>)，(n \geq 2)，都有 (S_{n-1} + S_{n+1} &lt; 2S_n).<br>
+其中所有正确结论的序号是 ___.
+(出处不详,遇强则强)</p>
+</blockquote>
+<p>由以上的分析,可以做出初步判断:</p>
+<p>①②正确,③错误</p>
+<p>④等价于(a_{n+1}\lt a_{n}),这就是第一题的③,所以④也正确.</p>
+<p>综上,选(\boxed{①②④})</p>
+<h1 id="小结">小结</h1>
+<blockquote>
+<p>莫让浮云遮望眼,撩开雾纱见真颜</p>
+</blockquote>
+<p>即便面对<em>扑朔迷离,不可求通项</em>的数列,我们也有一套可行的解题方法(函数与极限).</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-02-10</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-title="每日艺题 DAY001" data-hashtags="数学,数列"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-title="每日艺题 DAY001"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-hashtag="数学"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-title="每日艺题 DAY001"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-title="每日艺题 DAY001"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-title="每日艺题 DAY001"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/math/meiri-yiti-day001/" data-title="每日艺题 DAY001" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fmath%2fmeiri-yiti-day001%2f&amp;text=%e6%af%8f%e6%97%a5%e8%89%ba%e9%a2%98%20DAY001" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>,&nbsp;<a href="/tags/%E6%95%B0%E5%88%97/">数列</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/math/meiri-yiti-day002/" class="next" rel="next" title="每日艺题 DAY002">每日艺题 DAY002<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

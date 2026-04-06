@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>关于本站 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/about-this-site/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="关于本站">
+  <meta property="og:description" content="规划准备 此站于清华附中“极智”挑战期间(2026-01-31~2026-02-06)搭建
+笔者打算使用hugo搭建静态博客网站，然后由nginx处理流量。
+具体操作 配置云服务器
+清华附中为学员提供了阿里云ECS的服务器，这与笔者在初中时搭建的服务器类型相同。
+在Datacon注册及登录后，可以打开虚拟环境，查看ECS SSH的ip及密码，然后便可以通过SSH远程登录root账号（笔者使用了VSCode的OpenSSH插件）
+ssh -p 22 root@&lt;your_ip&gt; 随后输入密码即可登录
+设置域名解析
+注册Namesilo的账号，并在Namesilo中购买一个域名（笔者购买了alexsun.one，花费24CNY），配置DNS记录，等待10分钟（TTL=3600）后即可全球生效
+Type Name Text A @ &lt;your_ip&gt; A www &lt;your_ip&gt; 查看是否生效的方法：
+nslookup &lt;host_name&gt; 如果正确返回&lt;your_ip&gt;，则DNS解析设置成功
+安装组件
+安装nginx apt install nginx #安装nginx nginx 然后访问http://host_name，若显示nginx欢迎页面，则成功">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-02T16:36:28+08:00">
+    <meta property="article:modified_time" content="2026-02-02T16:36:28+08:00">
+    <meta property="article:tag" content="Nginx">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Linux">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="关于本站">
+  <meta name="twitter:description" content="规划准备 此站于清华附中“极智”挑战期间(2026-01-31~2026-02-06)搭建
+笔者打算使用hugo搭建静态博客网站，然后由nginx处理流量。
+具体操作 配置云服务器
+清华附中为学员提供了阿里云ECS的服务器，这与笔者在初中时搭建的服务器类型相同。
+在Datacon注册及登录后，可以打开虚拟环境，查看ECS SSH的ip及密码，然后便可以通过SSH远程登录root账号（笔者使用了VSCode的OpenSSH插件）
+ssh -p 22 root@&lt;your_ip&gt; 随后输入密码即可登录
+设置域名解析
+注册Namesilo的账号，并在Namesilo中购买一个域名（笔者购买了alexsun.one，花费24CNY），配置DNS记录，等待10分钟（TTL=3600）后即可全球生效
+Type Name Text A @ &lt;your_ip&gt; A www &lt;your_ip&gt; 查看是否生效的方法：
+nslookup &lt;host_name&gt; 如果正确返回&lt;your_ip&gt;，则DNS解析设置成功
+安装组件
+安装nginx apt install nginx #安装nginx nginx 然后访问http://host_name，若显示nginx欢迎页面，则成功">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/about-this-site/" /><link rel="prev" href="http://localhost:1313/posts/news/day002/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "关于本站",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/about-this-site\/"
+        },"genre": "posts","keywords": "Nginx, Hugo, Linux","wordcount":  219 ,
+        "url": "http:\/\/localhost:1313\/posts\/about-this-site\/","datePublished": "2026-02-02T16:36:28+08:00","dateModified": "2026-02-02T16:36:28+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 🏠Home </a><a class="menu-item" href="/categories/"> 📂Cat </a><a class="menu-item" href="/tags/"> 🏷️Tag </a><a class="menu-item" href="/archive/"> 📜Arch </a><a class="menu-item" href="/search/"> 🔍 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">🏠Home</a><a class="menu-item" href="/categories/" title="">📂Cat</a><a class="menu-item" href="/tags/" title="">🏷️Tag</a><a class="menu-item" href="/archive/" title="">📜Arch</a><a class="menu-item" href="/search/" title="">🔍</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">关于本站</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"><i class="far fa-folder" aria-hidden="true"></i>网站建设</a>&nbsp;<a href="/categories/linux%E5%91%BD%E4%BB%A4/"><i class="far fa-folder" aria-hidden="true"></i>Linux命令</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-02">2026-02-02</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;219 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装nginx">安装nginx</a></li>
+    <li><a href="#安装hugo">安装Hugo</a></li>
+    <li><a href="#certbot">certbot</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="规划准备">规划准备</h1>
+<p>此站于<a href="https://qhfz.edu.cn/" target="_blank" rel="noopener noreffer ">清华附中</a>“极智”挑战期间(2026-01-31~2026-02-06)搭建</p>
+<p>笔者打算使用<a href="https://www.alexsun.one/posts/hugo/" target="_blank" rel="noopener noreffer "><em>hugo</em></a>搭建静态博客网站，然后由nginx处理流量。</p>
+<h1 id="具体操作">具体操作</h1>
+<ol>
+<li>
+<p>配置云服务器</p>
+<p>清华附中为学员提供了<a href="https://www.aliyun.com/benefit/select/ecs" target="_blank" rel="noopener noreffer ">阿里云ECS</a>的服务器，这与笔者在初中时搭建的服务器类型相同。</p>
+<p>在Datacon注册及登录后，可以打开虚拟环境，查看ECS SSH的ip及密码，然后便可以通过SSH远程登录root账号（笔者使用了VSCode的OpenSSH插件）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh -p <span class="m">22</span> root@&lt;your_ip&gt;</span></span></code></pre></div></div>
+<p>随后输入密码即可登录</p>
+</li>
+<li>
+<p>设置域名解析</p>
+<p>注册<a href="https://www.namesilo.com/" target="_blank" rel="noopener noreffer ">Namesilo</a>的账号，并在Namesilo中购买一个域名（笔者购买了alexsun.one，花费24CNY），配置DNS记录，等待10分钟（TTL=3600）后即可全球生效</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Text</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A</td>
+          <td>@</td>
+          <td>&lt;your_ip&gt;</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td>www</td>
+          <td>&lt;your_ip&gt;</td>
+      </tr>
+  </tbody>
+</table>
+<p>查看是否生效的方法：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-batch">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">nslookup <span class="p">&lt;</span>host_name&gt;</span></span></code></pre></div></div>
+<p>如果正确返回&lt;your_ip&gt;，则DNS解析设置成功</p>
+</li>
+<li>
+<p>安装组件</p>
+<h2 id="安装nginx">安装nginx</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">apt install nginx
+</span></span><span class="line"><span class="cl"><span class="c1">#安装nginx</span>
+</span></span><span class="line"><span class="cl">nginx</span></span></code></pre></div></div>
+<p>然后访问http://host_name，若显示nginx欢迎页面，则成功</p>
+<h2 id="安装hugo">安装Hugo</h2>
+<p>经笔者实测，Ubuntu上用apt安装的Hugo版本较老，与最新版本的ananke主题不兼容（这个浪费了笔者一晚上时间）</p>
+<p><del>apt install hugo</del></p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap install --beta hugo
+</span></span><span class="line"><span class="cl">hugo version</span></span></code></pre></div></div>
+<blockquote>
+<p>root@datacon-winterc:~/quickstart# hugo version
+hugo v0.156.0-DEV-73641aeca107c26f53e9a0f76a141cdb43faf277+extended linux/amd64 BuildDate=2026-02-02T10:27:50Z VendorInfo=snap:0.155.2+git1.73641aeca</p>
+</blockquote>
+<p>这样就是安装成功Hugo了。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo new site alexblog
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> alexblog
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> theme
+</span></span><span class="line"><span class="cl">git clone https://github.com/theNewDynamic/gohugo-theme-ananke.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ..
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;theme = &#39;gohugo-theme-ananke&#39;&#34;</span> &gt;&gt; hugo.toml
+</span></span><span class="line"><span class="cl">hugo server</span></span></code></pre></div></div>
+<p>alexblog目录结构如下：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>archetypes  assets  content  data  hugo.toml  i18n  layouts  public  resources  static  themes</code></pre></div>
+<p>alexblog/public目录结构如下:</p>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-404.html">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-404.html" data-lang="404.html"><span class="line"><span class="cl">ananke
+</span></span><span class="line"><span class="cl">asciinema
+</span></span><span class="line"><span class="cl">assets
+</span></span><span class="line"><span class="cl">book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css
+</span></span><span class="line"><span class="cl">categories
+</span></span><span class="line"><span class="cl">cdategories
+</span></span><span class="line"><span class="cl">en.search-data.min.486891b2bf1f08818be2bdf8569fbadd5a4ca08de48415c4ca942d9353fe2404.json
+</span></span><span class="line"><span class="cl">en.search-data.min.81946b14455debd3c2dab6f0ca6ba2c58dbc6e8bfbe6fddb06d433feb8340648.json
+</span></span><span class="line"><span class="cl">en.search.min.28c0782592a93c540f59dfe0c5f5b4e0ccaa7a7e805178cd77913ca1169d5fae.js
+</span></span><span class="line"><span class="cl">en.search.min.95caaac1812624d461b676a1695e701606990b8971b058a32d99aac655fa29c1.js
+</span></span><span class="line"><span class="cl">favicon.png
+</span></span><span class="line"><span class="cl">favicon.svg
+</span></span><span class="line"><span class="cl">fuse.min.js
+</span></span><span class="line"><span class="cl">icons
+</span></span><span class="line"><span class="cl">images
+</span></span><span class="line"><span class="cl">index.html
+</span></span><span class="line"><span class="cl">index.json
+</span></span><span class="line"><span class="cl">index.xml
+</span></span><span class="line"><span class="cl">katex
+</span></span><span class="line"><span class="cl">manifest.json
+</span></span><span class="line"><span class="cl">mermaid.min.js
+</span></span><span class="line"><span class="cl">page
+</span></span><span class="line"><span class="cl">post
+</span></span><span class="line"><span class="cl">posts
+</span></span><span class="line"><span class="cl">search
+</span></span><span class="line"><span class="cl">sitemap.xml
+</span></span><span class="line"><span class="cl">tags
+</span></span><span class="line"><span class="cl">test</span></span></code></pre></div></div>
+<p>试着访问&lt;host_name&gt;:1313，未果。
+遂</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp -r public/* /var/www/html
+</span></span><span class="line"><span class="cl"><span class="c1">#把Hugo生成的静态页面保存到nginx站点的目录下</span></span></span></code></pre></div></div>
+<p>之后访问&lt;host_name&gt;，若正常看到Hugo站点，那么大功告成</p>
+<h2 id="certbot">certbot</h2>
+<p>我们使用certbot的standalone模式申请Let&rsquo;s Encrypt的免费证书（BTW:清华官网使用的也是Let&rsquo;s Encrypt的免费证书）</p>
+<p>Standalone是Certbot的一种工作模式，其会临时启动一个内置的Web服务器来处理Let&rsquo;s Encrypt的验证挑战</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">apt install certbot
+</span></span><span class="line"><span class="cl">systemctl stop nginx
+</span></span><span class="line"><span class="cl"><span class="c1">#避免nginx占用80端口</span>
+</span></span><span class="line"><span class="cl">certbot certonly --standalone -d www.alexsun.one</span></span></code></pre></div></div>
+<p>一个证书也可以对应多个域名：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">certbot certonly --standalone -d www.alexsun.one -d alexsun.one -d cn.alexsun.one</span></span></code></pre></div></div>
+<p>如果没有问题，你会获得公钥(fullchain.pem)和私钥(privkey.pem)
+在nginx配置文件/etc/nginx/sites-available/default中，把原有的server块再复制一份，并于新server块中加入</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssl_certificate &lt;path_to_fullchain.pem&gt;
+</span></span><span class="line"><span class="cl">ssl_certificate_key &lt;path_to_privkey.pem&gt;</span></span></code></pre></div></div>
+<p>并把端口80改为443</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nginx -s reload
+</span></span><span class="line"><span class="cl"><span class="c1">#重启nginx</span></span></span></code></pre></div></div>
+<p>之后https://&lt;host_name&gt;应该就可以正常访问了</p>
+</li>
+<li>
+<p>新增文章</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo new content posts/new_post.md</span></span></code></pre></div></div>
+<p>新增的new_post.md内容如下</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-markdown">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">+++
+</span></span><span class="line"><span class="cl">date = &#39;2026-02-03T09:12:29+08:00&#39;
+</span></span><span class="line"><span class="cl">draft = true
+</span></span><span class="line"><span class="cl">title = &#39;New_post&#39;
+</span></span><span class="line"><span class="cl">+++</span></span></code></pre></div></div>
+<p>new_post.md的默认内容在quickstart/archetypes/default.md
+我根据自己的习惯，修改为</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-markdown">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">date : &#39;{{ .Date }}&#39;
+</span></span><span class="line"><span class="cl">draft : true
+</span></span><span class="line"><span class="cl">title : &#39;{{ replace .File.ContentBaseName &#34;-&#34; &#34; &#34; | title }}&#39;
+</span></span><span class="line"><span class="cl">---</span></span></code></pre></div></div>
+<p>按照<a href="posts/markdown/" rel="">markdown正常格式</a>书写文章即可（记得把draft = true改为draft = false）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-shell">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo
+</span></span><span class="line"><span class="cl">cp -r public/* /var/www/html
+</span></span><span class="line"><span class="cl"><span class="c1">#更新站点</span></span></span></code></pre></div></div>
+</li>
+</ol>
+<h1 id="结语">结语</h1>
+<p>到此为止，Hugo个人博客的搭建基本完成。进一步完善网站，如增加LaTex数学表达式支持，或设置menu，更换主题，美化网站等内容，可以参考<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener noreffer ">Hugo官方文档</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-02-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/about-this-site/" data-title="关于本站" data-hashtags="Nginx,Hugo,Linux"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/about-this-site/" data-title="关于本站"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/about-this-site/" data-hashtag="Nginx"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/about-this-site/" data-title="关于本站"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/about-this-site/" data-title="关于本站"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/about-this-site/" data-title="关于本站"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/about-this-site/" data-title="关于本站" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fabout-this-site%2f&amp;text=%e5%85%b3%e4%ba%8e%e6%9c%ac%e7%ab%99" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/nginx/">Nginx</a>,&nbsp;<a href="/tags/hugo/">Hugo</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/news/day002/" class="prev" rel="prev" title="Day002"><i class="fas fa-angle-left" aria-hidden="true"></i>Day002</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.155.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>

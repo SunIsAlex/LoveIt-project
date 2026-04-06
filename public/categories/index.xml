@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文章分类 on My New Hugo Site</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in 文章分类 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Apr 2026 20:48:40 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>高考数学</title>
+      <link>http://localhost:1313/categories/%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6/</link>
+      <pubDate>Fri, 03 Apr 2026 20:48:40 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>高联一试</title>
+      <link>http://localhost:1313/categories/%E9%AB%98%E8%81%94%E4%B8%80%E8%AF%95/</link>
+      <pubDate>Mon, 09 Mar 2026 20:51:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E9%AB%98%E8%81%94%E4%B8%80%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>有机化学</title>
+      <link>http://localhost:1313/categories/%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6/</link>
+      <pubDate>Fri, 27 Feb 2026 17:08:31 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UEFI</title>
+      <link>http://localhost:1313/categories/uefi/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/uefi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>http://localhost:1313/categories/windows/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>系统修复</title>
+      <link>http://localhost:1313/categories/%E7%B3%BB%E7%BB%9F%E4%BF%AE%E5%A4%8D/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/%E7%B3%BB%E7%BB%9F%E4%BF%AE%E5%A4%8D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>物理</title>
+      <link>http://localhost:1313/categories/%E7%89%A9%E7%90%86/</link>
+      <pubDate>Wed, 18 Feb 2026 02:39:06 +0000</pubDate>
+      <guid>http://localhost:1313/categories/%E7%89%A9%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>化学</title>
+      <link>http://localhost:1313/categories/%E5%8C%96%E5%AD%A6/</link>
+      <pubDate>Tue, 17 Feb 2026 15:00:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/%E5%8C%96%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>每日艺题</title>
+      <link>http://localhost:1313/categories/%E6%AF%8F%E6%97%A5%E8%89%BA%E9%A2%98/</link>
+      <pubDate>Thu, 12 Feb 2026 16:54:26 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E6%AF%8F%E6%97%A5%E8%89%BA%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>网站建设</title>
+      <link>http://localhost:1313/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</link>
+      <pubDate>Fri, 06 Feb 2026 10:51:13 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>网络</title>
+      <link>http://localhost:1313/categories/%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Fri, 06 Feb 2026 10:51:13 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E7%BD%91%E7%BB%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux命令</title>
+      <link>http://localhost:1313/categories/linux%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 05 Feb 2026 10:47:08 +0800</pubDate>
+      <guid>http://localhost:1313/categories/linux%E5%91%BD%E4%BB%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI</title>
+      <link>http://localhost:1313/categories/ai/</link>
+      <pubDate>Wed, 04 Feb 2026 22:59:20 +0800</pubDate>
+      <guid>http://localhost:1313/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>English</title>
+      <link>http://localhost:1313/categories/english/</link>
+      <pubDate>Mon, 02 Feb 2026 22:17:46 +0800</pubDate>
+      <guid>http://localhost:1313/categories/english/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
